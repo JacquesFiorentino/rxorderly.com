@@ -264,13 +264,19 @@
       gap: 48px 40px;
     }
 
+    /* Description above screenshot */
     .feature-card {
       display: grid;
-      grid-template-rows: auto 1fr;
-      gap: 24px;
+      grid-template-rows: auto auto;
+      gap: 20px;
+    }
+
+    .feature-body {
+      order: 1;
     }
 
     .feature-phone {
+      order: 2;
       border-radius: 24px;
       overflow: hidden;
       box-shadow: 0 16px 48px rgba(7,48,93,0.14);
@@ -282,7 +288,6 @@
     }
     .feature-phone img { width: 100%; display: block; }
 
-    .feature-body {}
     .feature-number {
       font-size: 11px;
       font-weight: 700;
@@ -303,6 +308,50 @@
       color: var(--muted);
       line-height: 1.65;
     }
+
+    /* ── VISIT SHEET SAMPLE ──────────────────────── */
+    #visit-sheet {
+      background: var(--sky);
+    }
+
+    .pdf-viewer-wrap {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(7,48,93,0.18);
+      border: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .pdf-viewer-wrap object,
+    .pdf-viewer-wrap iframe {
+      width: 100%;
+      height: 780px;
+      display: block;
+      border: none;
+    }
+
+    .pdf-fallback {
+      padding: 48px;
+      text-align: center;
+    }
+
+    .pdf-download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 32px;
+      border-radius: 100px;
+      text-decoration: none;
+      margin-top: 24px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(7,48,93,0.3);
+    }
+    .pdf-download-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(7,48,93,0.4); }
 
     /* ── WHY RXORDERLY ───────────────────────────── */
     #why {
@@ -347,7 +396,7 @@
 
     /* ── CTA ─────────────────────────────────────── */
     #cta {
-      background: var(--sky);
+      background: var(--white);
       text-align: center;
       padding: 96px 48px;
     }
@@ -432,11 +481,15 @@
       .why-grid { grid-template-columns: 1fr; }
       footer { padding: 32px 24px; }
       .footer-inner { flex-direction: column; align-items: flex-start; }
+      .pdf-viewer-wrap object,
+      .pdf-viewer-wrap iframe { height: 500px; }
     }
 
     @media (max-width: 580px) {
       .features-grid { grid-template-columns: 1fr; }
       .stats { padding: 32px 24px; }
+      .pdf-viewer-wrap object,
+      .pdf-viewer-wrap iframe { height: 400px; }
     }
 
     /* ── ANIMATIONS ──────────────────────────────── */
@@ -458,6 +511,7 @@
   <div class="nav-logo">Rx<span>Orderly</span></div>
   <div>
     <a href="#features">Features</a>
+    <a href="#visit-sheet">Visit Sheet</a>
     <a href="#why">Why RxOrderly</a>
     <a href="mailto:support@rxorderly.com">Support</a>
     <a href="mailto:support@rxorderly.com" class="nav-cta">Contact Us</a>
@@ -522,71 +576,99 @@
     <div class="features-grid">
 
       <div class="feature-card">
-        <div class="feature-phone">
-          <img src="images/SupplyOnHand.png" alt="Supply On Hand" />
-        </div>
         <div class="feature-body">
           <div class="feature-number">01 — Inventory</div>
           <h3 class="feature-title">Supply On Hand</h3>
           <p class="feature-desc">See exactly how many days of supply you have for every medication — sorted by urgency so you always know what needs attention first.</p>
         </div>
+        <div class="feature-phone">
+          <img src="images/SupplyOnHand.png" alt="Supply On Hand" />
+        </div>
       </div>
 
       <div class="feature-card">
-        <div class="feature-phone">
-          <img src="images/RefillRequest.png" alt="Refill Request" />
-        </div>
         <div class="feature-body">
           <div class="feature-number">02 — Refills</div>
           <h3 class="feature-title">Request Refills</h3>
           <p class="feature-desc">Contact your prescriber or pharmacy in one tap — by voice, text, or email — with your medication list already prepared.</p>
         </div>
+        <div class="feature-phone">
+          <img src="images/RefillRequest.png" alt="Refill Request" />
+        </div>
       </div>
 
       <div class="feature-card">
-        <div class="feature-phone">
-          <img src="images/Research_1.png" alt="Drug Research" />
-        </div>
         <div class="feature-body">
           <div class="feature-number">03 — Research</div>
           <h3 class="feature-title">Drug &amp; Supplement Research</h3>
           <p class="feature-desc">Access FDA label information — interactions, side effects, and warnings — for every medication and supplement you take, without leaving the app.</p>
         </div>
+        <div class="feature-phone">
+          <img src="images/Research_1.png" alt="Drug Research" />
+        </div>
       </div>
 
       <div class="feature-card">
-        <div class="feature-phone">
-          <img src="images/Savings.png" alt="Find Savings" />
-        </div>
         <div class="feature-body">
           <div class="feature-number">04 — Savings</div>
           <h3 class="feature-title">Find Savings</h3>
           <p class="feature-desc">Track what you spend on prescriptions, check your eligibility for assistance programs, and discover Medicare and NeedyMeds resources.</p>
         </div>
+        <div class="feature-phone">
+          <img src="images/Savings.png" alt="Find Savings" />
+        </div>
       </div>
 
       <div class="feature-card">
-        <div class="feature-phone">
-          <img src="images/Doc_Visits.png" alt="Doctor Visit Prep" />
-        </div>
         <div class="feature-body">
           <div class="feature-number">05 — Visit Prep</div>
           <h3 class="feature-title">Doctor Visit Prep</h3>
           <p class="feature-desc">Walk into every appointment prepared. Generate a comprehensive PDF packet with your medications, notes, symptoms, and health measurements.</p>
         </div>
+        <div class="feature-phone">
+          <img src="images/Doc_Visits.png" alt="Doctor Visit Prep" />
+        </div>
       </div>
 
       <div class="feature-card">
-        <div class="feature-phone">
-          <img src="images/Medical_ID.png" alt="Medical ID" />
-        </div>
         <div class="feature-body">
           <div class="feature-number">06 — Safety</div>
           <h3 class="feature-title">Medical ID Card</h3>
           <p class="feature-desc">Generate an In Case of Emergency card with your medications, allergies, physicians, and emergency contacts — ready when it matters most.</p>
         </div>
+        <div class="feature-phone">
+          <img src="images/Medical_ID.png" alt="Medical ID" />
+        </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- VISIT SHEET SAMPLE -->
+<section id="visit-sheet">
+  <div class="section-inner">
+    <div class="section-tag">Doctor Visit Prep</div>
+    <h2 class="section-title">See what your doctor receives.</h2>
+    <p class="section-sub">RxOrderly generates a clean, professional visit sheet your doctor can use immediately — medications, refill requests, symptoms, measurements, and your questions, all in one place.</p>
+
+    <div class="pdf-viewer-wrap">
+      <object data="Sample_Doctor_Visit_Sheet.pdf" type="application/pdf">
+        <iframe src="Sample_Doctor_Visit_Sheet.pdf">
+          <div class="pdf-fallback">
+            <p style="font-size:16px; color:var(--muted);">Your browser cannot display the PDF inline.</p>
+            <a href="Sample_Doctor_Visit_Sheet.pdf" class="pdf-download-btn" download>
+              📄 &nbsp;Download Sample Visit Sheet
+            </a>
+          </div>
+        </iframe>
+      </object>
+    </div>
+
+    <div style="text-align:center; margin-top:28px;">
+      <a href="Sample_Doctor_Visit_Sheet.pdf" class="pdf-download-btn" download>
+        📄 &nbsp;Download Sample Visit Sheet
+      </a>
     </div>
   </div>
 </section>
@@ -657,6 +739,7 @@
     <div class="footer-logo">Rx<span>Orderly</span></div>
     <div class="footer-links">
       <a href="#features">Features</a>
+      <a href="#visit-sheet">Visit Sheet</a>
       <a href="#why">Why RxOrderly</a>
       <a href="mailto:support@rxorderly.com">Support</a>
       <a href="privacy.html">Privacy Policy</a>
