@@ -118,29 +118,27 @@
     .download-btn {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 14px;
       background: #0f2545;
       color: #fff;
       text-decoration: none;
-      border-radius: 10px;
-      padding: 14px 18px;
+      border-radius: 12px;
+      padding: 22px 28px;
       transition: background 0.2s;
-      margin-bottom: 0;
+      margin: 0 auto;
+      width: 70%;
+      min-width: 260px;
     }
     .download-btn:hover { background: #1a3d6e; }
     .download-btn .dl-icon {
-      width: 36px; height: 36px;
-      background: rgba(255,255,255,0.12);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
+      font-size: 1.8rem;
       flex-shrink: 0;
     }
-    .download-btn .dl-info { flex: 1; }
-    .download-btn .dl-label { font-size: 0.7rem; color: rgba(255,255,255,0.6); margin-bottom: 2px; }
-    .download-btn .dl-filename { font-size: 1rem; font-weight: 700; }
-    .download-btn .dl-sub { font-size: 0.75rem; color: rgba(255,255,255,0.55); margin-top: 1px; }
-    .download-btn .dl-arrow { font-size: 1.2rem; color: rgba(255,255,255,0.5); }
+    .download-btn .dl-info { text-align: center; }
+    .download-btn .dl-label { font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-bottom: 4px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .download-btn .dl-filename { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.01em; }
+    .download-btn .dl-sub { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 4px; }
     .transfer-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -218,15 +216,16 @@
   <div class="card">
     <h2>Download the App</h2>
     <div class="meta"><span>Version 0.5.6 Beta</span><span>Android 6.0 and later</span></div>
-    <a class="download-btn" href="RxOrderly.apk" download>
-      <div class="dl-icon">⬇</div>
-      <div class="dl-info">
-        <div class="dl-label">Tap to download</div>
-        <div class="dl-filename">RxOrderly.apk</div>
-        <div class="dl-sub">Beta · Android</div>
-      </div>
-      <div class="dl-arrow">→</div>
-    </a>
+    <div style="text-align:center; padding: 8px 0 4px;">
+      <a class="download-btn" href="RxOrderly.apk" download>
+        <div class="dl-icon">⬇</div>
+        <div class="dl-info">
+          <div class="dl-label">Tap to download</div>
+          <div class="dl-filename">RxOrderly.apk</div>
+          <div class="dl-sub">Beta · Android</div>
+        </div>
+      </a>
+    </div>
   </div>
 
   <div class="card">
