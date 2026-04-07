@@ -3,357 +3,135 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RxOrderly Beta — Android Download</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <title>RxOrderly Android Beta</title>
   <style>
-    :root {
-      --navy:       #07305d;
-      --navy-light: #0e4a8f;
-      --sky:        #e8f2ff;
-      --accent:     #2a7fd4;
-      --text:       #1a2b3c;
-      --muted:      #5a7090;
-      --white:      #ffffff;
-      --border:     #d0dff0;
-      --success:    #1d7a4e;
-      --warning:    #7a4a00;
-      --warning-bg: #fff8ed;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--sky);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* ── Header ─────────────────────────────── */
-    header {
-      background: var(--navy);
-      padding: 24px 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    header img {
-      height: 52px;
-      width: auto;
-      filter: brightness(0) invert(1);
-    }
-
-    /* ── Hero ───────────────────────────────── */
-    .hero {
-      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 100%);
-      color: var(--white);
-      text-align: center;
-      padding: 56px 24px 64px;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.3);
-      border-radius: 100px;
-      padding: 6px 18px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-
-    .hero h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(28px, 5vw, 44px);
-      line-height: 1.15;
-      margin-bottom: 16px;
-      max-width: 640px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero p {
-      font-size: 17px;
-      font-weight: 300;
-      line-height: 1.65;
-      color: rgba(255,255,255,0.82);
-      max-width: 520px;
-      margin: 0 auto;
-    }
-
-    /* ── Card container ─────────────────────── */
-    .container {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       max-width: 680px;
-      margin: -32px auto 0;
-      padding: 0 20px 60px;
-      flex: 1;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      color: #1a1a2e;
+      background: #f7f9fc;
+      line-height: 1.65;
     }
-
-    .card {
-      background: var(--white);
-      border-radius: 16px;
-      box-shadow: 0 4px 24px rgba(7,48,93,0.10);
-      overflow: hidden;
+    header { text-align: center; margin-bottom: 2rem; }
+    header img { width: 80px; border-radius: 18px; margin-bottom: 0.75rem; }
+    h1 { font-size: 1.75rem; margin: 0.25rem 0 0; color: #1a1a2e; }
+    .badge {
+      display: inline-block;
+      background: #e8f4fd;
+      color: #1565c0;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+      margin-top: 0.4rem;
     }
-
-    /* ── Warning banner ─────────────────────── */
-    .warning-banner {
-      background: var(--warning-bg);
-      border-bottom: 1px solid #f0dbb0;
-      padding: 16px 28px;
+    .download-btn {
+      display: block;
+      background: #1565c0;
+      color: #fff;
+      text-align: center;
+      padding: 0.9rem 1.5rem;
+      border-radius: 10px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      text-decoration: none;
+      margin: 1.75rem 0;
+      transition: background 0.2s;
+    }
+    .download-btn:hover { background: #0d47a1; }
+    .steps { counter-reset: step; list-style: none; padding: 0; margin: 0; }
+    .steps li {
+      counter-increment: step;
       display: flex;
-      gap: 12px;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
       align-items: flex-start;
     }
-
-    .warning-banner .icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
-
-    .warning-banner p {
-      font-size: 14px;
-      line-height: 1.55;
-      color: var(--warning);
-    }
-
-    .warning-banner strong { font-weight: 600; }
-
-    /* ── Download section ───────────────────── */
-    .download-section {
-      padding: 36px 28px 32px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .download-section h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 24px;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-
-    .download-section .subtitle {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 28px;
-    }
-
-    .download-btn {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      background: var(--navy);
-      color: var(--white);
-      text-decoration: none;
-      border-radius: 12px;
-      padding: 18px 24px;
-      transition: background 0.18s, transform 0.12s;
-      width: 100%;
-    }
-
-    .download-btn:hover {
-      background: var(--navy-light);
-      transform: translateY(-1px);
-    }
-
-    .download-btn:active { transform: translateY(0); }
-
-    .download-btn .btn-icon {
-      width: 44px;
-      height: 44px;
-      background: rgba(255,255,255,0.12);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
+    .steps li::before {
+      content: counter(step);
       flex-shrink: 0;
-    }
-
-    .download-btn .btn-text { flex: 1; }
-    .download-btn .btn-label { font-size: 12px; opacity: 0.7; font-weight: 400; }
-    .download-btn .btn-title { font-size: 17px; font-weight: 600; margin-top: 2px; }
-    .download-btn .btn-meta { font-size: 12px; opacity: 0.65; margin-top: 2px; }
-    .download-btn .btn-arrow { font-size: 20px; opacity: 0.7; }
-
-    /* ── Steps ──────────────────────────────── */
-    .steps-section {
-      padding: 32px 28px;
-    }
-
-    .steps-section h3 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 20px;
-      color: var(--navy);
-      margin-bottom: 24px;
-    }
-
-    .step {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 28px;
-    }
-
-    .step:last-child { margin-bottom: 0; }
-
-    .step-num {
-      width: 32px;
-      height: 32px;
+      width: 2rem;
+      height: 2rem;
+      background: #1565c0;
+      color: #fff;
       border-radius: 50%;
-      background: var(--navy);
-      color: var(--white);
-      font-size: 14px;
-      font-weight: 600;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
-      margin-top: 1px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-top: 0.15rem;
     }
-
-    .step-content h4 {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--navy);
-      margin-bottom: 4px;
+    .steps li p { margin: 0 0 0.35rem; }
+    .steps li .note {
+      font-size: 0.85rem;
+      color: #555;
+      background: #eef2f7;
+      border-radius: 6px;
+      padding: 0.4rem 0.65rem;
+      margin-top: 0.35rem;
     }
-
-    .step-content p {
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--muted);
-    }
-
-    .step-content .note {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--sky);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 8px 12px;
-      font-size: 13px;
-      color: var(--text);
-      margin-top: 10px;
-      line-height: 1.5;
-    }
-
-    /* ── Footer ─────────────────────────────── */
-    .page-footer {
-      text-align: center;
-      padding: 8px 24px 40px;
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .page-footer a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .page-footer a:hover { text-decoration: underline; }
-
-    @media (max-width: 480px) {
-      header { padding: 20px 20px; }
-      .hero { padding: 44px 20px 52px; }
-      .download-section, .steps-section { padding: 28px 20px; }
-      .warning-banner { padding: 14px 20px; }
-    }
+    .divider { border: none; border-top: 1px solid #dde3ee; margin: 2rem 0; }
+    footer { font-size: 0.8rem; color: #888; text-align: center; }
+    a { color: #1565c0; }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="images/logo_n_slogan.svg" alt="RxOrderly — Effortless, organized control for your prescriptions" />
-  </header>
+<header>
+  <h1>RxOrderly</h1>
+  <div class="badge">Android Beta</div>
+</header>
 
-  <div class="hero">
-    <div class="hero-badge">Beta Testing</div>
-    <h1>Install RxOrderly on Your Android Phone</h1>
-    <p>Thank you for helping test RxOrderly. Follow the steps below to download and install the app on your device.</p>
-  </div>
+<p>Thanks for testing RxOrderly! Follow the steps below to install the app on your Android device or tablet.</p>
 
-  <div class="container">
-    <div class="card">
+<a class="download-btn" href="RxOrderly.apk" download>⬇ Download RxOrderly.apk</a>
 
-      <div class="warning-banner">
-        <span class="icon">⚠️</span>
-        <p><strong>This is a beta version.</strong> It is fully functional, but you may occasionally notice something that isn't quite right. That's exactly why your feedback is so valuable.</p>
-      </div>
+<ol class="steps">
 
-      <div class="download-section">
-        <h2>Download the App</h2>
-        <p class="subtitle">Version 0.5.6 Beta &nbsp;·&nbsp; Android 6.0 and later &nbsp;·&nbsp; 60 MB</p>
-
-        <a class="download-btn" href="RxOrderly.apk" download>
-          <div class="btn-icon">⬇</div>
-          <div class="btn-text">
-            <div class="btn-label">Tap to download</div>
-            <div class="btn-title">RxOrderly.apk</div>
-            <div class="btn-meta">Beta · Android</div>
-          </div>
-          <div class="btn-arrow">→</div>
-        </a>
-      </div>
-
-      <div class="steps-section">
-        <h3>How to Install It</h3>
-
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-content">
-            <h4>Tap the download button above</h4>
-            <p>Your browser will download a file called <strong>RxOrderly.apk</strong>. When it finishes, tap <strong>Open</strong> in the notification bar, or find it in your Downloads folder.</p>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-content">
-            <h4>Allow installation from this source</h4>
-            <p>Because this app doesn't come from the Google Play Store, Android will ask for permission to install it. Tap <strong>Settings</strong> when prompted, then turn on <strong>Allow from this source</strong>, and go back to complete the installation.</p>
-            <div class="note">💡 This is normal for beta testing. You can turn this setting off again after installing.</div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-content">
-            <h4>Tap Install</h4>
-            <p>Android will show you an installation screen. Tap <strong>Install</strong> to proceed. The app will be ready in a few seconds.</p>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-num">4</div>
-          <div class="step-content">
-            <h4>Open RxOrderly</h4>
-            <p>Tap <strong>Open</strong> after installation, or find the RxOrderly icon on your home screen. The app will walk you through a short setup to get your medications entered.</p>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-num">5</div>
-          <div class="step-content">
-            <h4>Send feedback</h4>
-            <p>If anything catches your attention — something confusing, something you liked, or something that didn't work — simply reply to Jacques's email. Every message is read personally.</p>
-          </div>
-        </div>
-
-      </div>
-
+  <li>
+    <div>
+      <p><strong>Tap the download button above</strong> on your Android device.</p>
+      <div class="note">Open this page in Chrome or your device's default browser for the smoothest experience.</div>
     </div>
-  </div>
+  </li>
 
-  <div class="page-footer">
-    Questions? Reply to Jacques's email or write to <a href="mailto:support@rxorderly.com">support@rxorderly.com</a><br />
-    <a href="https://rxorderly.com">rxorderly.com</a> &nbsp;·&nbsp; <a href="https://rxorderly.com/privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="https://rxorderly.com/terms.html">Terms of Use</a>
-  </div>
+  <li>
+    <div>
+      <p><strong>Allow installation from this source.</strong></p>
+      <p>Because this is a beta (not from the Play Store), Android will ask for permission before installing. The exact prompt varies by manufacturer and Android version, but you'll see one of these:</p>
+      <div class="note">
+        <strong>Chrome prompt:</strong> Tap <em>Settings</em> when Chrome asks, then enable <em>Allow from this source</em>, then go back and tap <em>Install</em>.<br><br>
+        <strong>Files app prompt:</strong> Tap <em>Install anyway</em> or <em>Allow</em> when your file manager asks about installing unknown apps.<br><br>
+        <strong>Settings path (if prompted manually):</strong> Go to <em>Settings → Apps → Special app access → Install unknown apps</em>, find your browser or file manager, and enable it.
+      </div>
+    </div>
+  </li>
+
+  <li>
+    <div>
+      <p><strong>Tap Install</strong> when the system installer appears.</p>
+    </div>
+  </li>
+
+  <li>
+    <div>
+      <p><strong>Open RxOrderly</strong> from your home screen or app drawer and set up your medications.</p>
+    </div>
+  </li>
+
+</ol>
+
+<hr class="divider" />
+
+<p><strong>Questions or issues?</strong> Email <a href="mailto:support@rxorderly.com">support@rxorderly.com</a> — we read every message.</p>
+
+<footer>
+  <p>RxOrderly is a product of Rivka SVCS LLC &nbsp;·&nbsp; <a href="https://rxorderly.com/privacy">Privacy Policy</a></p>
+</footer>
 
 </body>
 </html>
