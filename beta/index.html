@@ -15,7 +15,6 @@
       line-height: 1.65;
     }
     header { text-align: center; margin-bottom: 2rem; }
-    header img { width: 80px; border-radius: 18px; margin-bottom: 0.75rem; }
     h1 { font-size: 1.75rem; margin: 0.25rem 0 0; color: #1a1a2e; }
     .badge {
       display: inline-block;
@@ -42,6 +41,36 @@
       transition: background 0.2s;
     }
     .download-btn:hover { background: #0d47a1; }
+
+    h2 {
+      font-size: 1.1rem;
+      color: #1565c0;
+      margin: 2rem 0 0.75rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 2px solid #dde3ee;
+    }
+
+    .tip-box {
+      background: #e8f4fd;
+      border-left: 4px solid #1565c0;
+      border-radius: 0 8px 8px 0;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+    .tip-box strong { display: block; margin-bottom: 0.2rem; }
+
+    .transfer-options { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1rem; }
+    .transfer-option {
+      background: #fff;
+      border: 1px solid #dde3ee;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      font-size: 0.92rem;
+    }
+    .transfer-option strong { display: block; margin-bottom: 0.2rem; color: #1a1a2e; }
+    .transfer-option span { color: #555; }
+
     .steps { counter-reset: step; list-style: none; padding: 0; margin: 0; }
     .steps li {
       counter-increment: step;
@@ -90,23 +119,46 @@
 
 <a class="download-btn" href="RxOrderly.apk" download>⬇ Download RxOrderly.apk</a>
 
+<h2>Step 1 — Get the file onto your Android device</h2>
+
+<div class="tip-box">
+  <strong>Already on your Android device?</strong> Skip ahead to Step 2 — you're all set.
+</div>
+
+<p>If you downloaded the APK on a computer, use one of these methods to move it to your Android device:</p>
+
+<div class="transfer-options">
+  <div class="transfer-option">
+    <strong>📧 Email it to yourself</strong>
+    <span>Attach <em>RxOrderly.apk</em> to an email and send it to yourself. Open the email on your Android device and tap the attachment to download it.</span>
+  </div>
+  <div class="transfer-option">
+    <strong>☁️ Google Drive or Dropbox</strong>
+    <span>Upload <em>RxOrderly.apk</em> to Google Drive or Dropbox. Open the app on your Android device, find the file, and tap to download it.</span>
+  </div>
+  <div class="transfer-option">
+    <strong>💬 Send via Messages or WhatsApp</strong>
+    <span>Send the file to yourself as an attachment in any messaging app you have on both your computer and your Android device.</span>
+  </div>
+  <div class="transfer-option">
+    <strong>🔌 USB cable</strong>
+    <span>Connect your Android device to your computer with a USB cable. Copy <em>RxOrderly.apk</em> to the Downloads folder on your device, then open it from your file manager.</span>
+  </div>
+</div>
+
+<h2>Step 2 — Install the app</h2>
+
+<p>Once the APK file is on your device, tap it to begin installation. Because this is a beta (not from the Play Store), Android will ask for permission first. The exact prompt varies by device, but you'll see one of these:</p>
+
 <ol class="steps">
 
   <li>
     <div>
-      <p><strong>Tap the download button above</strong> on your Android device.</p>
-      <div class="note">Open this page in Chrome or your device's default browser for the smoothest experience.</div>
-    </div>
-  </li>
-
-  <li>
-    <div>
       <p><strong>Allow installation from this source.</strong></p>
-      <p>Because this is a beta (not from the Play Store), Android will ask for permission before installing. The exact prompt varies by manufacturer and Android version, but you'll see one of these:</p>
       <div class="note">
-        <strong>Chrome prompt:</strong> Tap <em>Settings</em> when Chrome asks, then enable <em>Allow from this source</em>, then go back and tap <em>Install</em>.<br><br>
-        <strong>Files app prompt:</strong> Tap <em>Install anyway</em> or <em>Allow</em> when your file manager asks about installing unknown apps.<br><br>
-        <strong>Settings path (if prompted manually):</strong> Go to <em>Settings → Apps → Special app access → Install unknown apps</em>, find your browser or file manager, and enable it.
+        <strong>Chrome prompt:</strong> Tap <em>Settings</em> when Chrome asks, enable <em>Allow from this source</em>, then go back and tap <em>Install</em>.<br><br>
+        <strong>Files app prompt:</strong> Tap <em>Install anyway</em> or <em>Allow</em> when your file manager asks.<br><br>
+        <strong>If prompted to find the setting manually:</strong> Go to <em>Settings → Apps → Special app access → Install unknown apps</em>, find your browser or file manager, and enable it.
       </div>
     </div>
   </li>
