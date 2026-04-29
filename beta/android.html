@@ -139,6 +139,23 @@
     .download-btn .dl-label { font-size: 1.9rem; color: #ffffff; margin-bottom: 4px; font-weight: 800; letter-spacing: -0.01em; }
     .download-btn .dl-filename { font-size: 0.85rem; font-weight: 400; color: rgba(255,255,255,0.6); letter-spacing: 0.02em; }
     .download-btn .dl-sub { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    /* Secondary "alt" variant — visually subordinate so the average
+       tester picks the primary 64-bit build, but still discoverable
+       for testers on 32-bit ARM devices (e.g. older Moto E hardware). */
+    .download-btn.alt {
+      background: #f0f4f8;
+      color: #0f2545;
+      margin-top: 12px;
+      padding: 14px 22px;
+      width: 60%;
+      min-width: 220px;
+      gap: 10px;
+    }
+    .download-btn.alt:hover { background: #e3eaf2; }
+    .download-btn.alt .dl-icon { font-size: 1.2rem; }
+    .download-btn.alt .dl-label { font-size: 1.05rem; color: #0f2545; font-weight: 700; margin-bottom: 2px; }
+    .download-btn.alt .dl-filename { font-size: 0.75rem; color: rgba(15,37,69,0.5); }
+    .download-btn.alt .dl-sub { font-size: 0.7rem; color: rgba(15,37,69,0.45); margin-top: 2px; }
     .transfer-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -223,6 +240,14 @@
           <div class="dl-label">Tap to Download</div>
           <div class="dl-filename">RxOrderly.apk</div>
           <div class="dl-sub">Beta · Android</div>
+        </div>
+      </a>
+      <a class="download-btn alt" href="RxOrderly-arm32.apk" download>
+        <div class="dl-icon">⬇</div>
+        <div class="dl-info">
+          <div class="dl-label">32-bit Version</div>
+          <div class="dl-filename">RxOrderly-arm32.apk</div>
+          <div class="dl-sub">For older Android devices</div>
         </div>
       </a>
     </div>
