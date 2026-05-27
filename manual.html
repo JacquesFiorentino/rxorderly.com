@@ -1,0 +1,2844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>User Manual · RxOrderly</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #1f2937;
+    background: #f8fafc;
+    margin: 0;
+    padding: 0;
+  }
+
+  header.site {
+    background: #07305d;
+    padding: 16px 24px;
+  }
+  header.site a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  header.site a:hover { text-decoration: underline; }
+
+  .container {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #07305d;
+    margin: 32px 0 8px;
+    line-height: 1.3;
+  }
+  h2 {
+    font-size: 19px;
+    font-weight: 700;
+    color: #07305d;
+    margin: 36px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 24px 0 8px;
+  }
+  p { margin: 0 0 14px; color: #374151; }
+  ul, ol { margin: 0 0 14px; padding-left: 24px; color: #374151; }
+  li { margin-bottom: 6px; }
+  strong { color: #1f2937; }
+  em { color: #1f2937; }
+  a { color: #2563eb; }
+
+  /* --- title block + download button ------------------------------------- */
+  .manual-title {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .manual-title .title {
+    font-size: 34px;
+    font-weight: 800;
+    color: #07305d;
+    margin: 0 0 4px;
+    line-height: 1.2;
+  }
+  .manual-title .tagline {
+    font-size: 16px;
+    color: #475569;
+    font-style: italic;
+    margin: 0 0 18px;
+  }
+  .manual-title .meta {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 18px;
+  }
+  .download-btn {
+    display: inline-block;
+    background: #07305d;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    transition: background 0.15s ease;
+  }
+  .download-btn:hover { background: #052342; text-decoration: none; }
+  .download-btn::before { content: "⬇  "; }
+
+  .work-in-progress {
+    background: #fffbeb;
+    border-left: 4px solid #f59e0b;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin-bottom: 28px;
+    font-size: 14px;
+    color: #92400e;
+    line-height: 1.5;
+  }
+
+
+  /* --- chapter eyebrow ---------------------------------------------------- */
+  .chapter-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    color: #2563eb;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 48px 0 -8px;
+  }
+  .chapter-eyebrow + h1 {
+    margin-top: 8px;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 16px;
+  }
+
+  /* --- screenshot placeholders ------------------------------------------- */
+  .figure-placeholder {
+    background: #f1f5f9;
+    border: 2px dashed #94a3b8;
+    border-radius: 10px;
+    padding: 28px 20px;
+    margin: 20px 0;
+    text-align: center;
+  }
+  .figure-placeholder .figure-label {
+    font-size: 13px;
+    color: #475569;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .figure-placeholder .figure-number { color: #07305d; }
+  .figure-placeholder .figure-platform { color: #64748b; font-weight: 600; }
+  .figure-placeholder .figure-todo {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 2px 8px;
+    background: #fde68a;
+    color: #92400e;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .figure-placeholder .figure-desc {
+    font-size: 14px;
+    color: #475569;
+    font-style: italic;
+    line-height: 1.4;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* --- callout boxes ----------------------------------------------------- */
+  .callout {
+    background: #eff6ff;
+    border-left: 4px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 20px 0;
+    font-size: 15px;
+    color: #1e3a8a;
+  }
+  .callout p { margin: 0 0 8px; color: #1e3a8a; }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout.callout-plain {
+    background: #ecfdf5;
+    border-left-color: #059669;
+    color: #065f46;
+    text-align: center;
+    font-style: italic;
+  }
+  .callout.callout-plain p { color: #065f46; }
+
+
+  footer.site {
+    font-size: 13px;
+    color: #9ca3af;
+    text-align: center;
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid #e5e7eb;
+  }
+  footer.site a { color: #9ca3af; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <a href="/">&larr; RxOrderly</a>
+</header>
+
+<div class="container">
+
+  <div class="manual-title">
+    <h1 class="title">User Manual</h1>
+    <p class="tagline">Effortless, organized control for your prescriptions.</p>
+    <p class="meta">Version 0.5.16 &nbsp;&middot;&nbsp; May 2026 &nbsp;&middot;&nbsp; Rivka SVCS LLC</p>
+    <a class="download-btn" href="RxOrderly_User_Manual.pdf" download>Download PDF</a>
+  </div>
+
+  <div class="work-in-progress">
+    <strong>Work in progress.</strong> Screenshots are still being captured. Where you see a <em>[Screenshot to come]</em> marker, an image of the actual screen will appear in a future revision.
+  </div>
+
+<h1 id="welcome-im-so-glad-youre-here.">Welcome — I’m so glad you’re
+here.</h1>
+<p>This is the manual for RxOrderly, and it’s going to walk you through
+everything the app can do for you — clearly, calmly, one chapter at a
+time.</p>
+<p>A bit about me: I’m 81. For fifteen years I cared for my mother
+through Alzheimer’s; she passed at 93. Now I’m navigating advanced age
+myself — fortunate, for the moment, to be functioning near full
+capacity. It struck me that with nearly everyone carrying a smart device
+or tablet these days, there ought to be a serious app for managing the
+daily business of medications and medical routines. I went looking. I
+found many that did pieces of it; none that did the whole job well. So I
+wrote one.</p>
+<p>Anyone with a real list knows what I mean. A pill in the morning, an
+inhaler at lunch, eye drops at bedtime, a refill that needs to be called
+in by Thursday — and the new prescription the cardiologist just added.
+It’s a lot to hold in your head. It shouldn’t have to be.</p>
+<p>So this app is going to hold all of it for you. The medications, the
+schedules, the refills, the doctors, the pharmacies, the insurance
+cards, the questions you want to remember to ask. All of it. In one
+place. On your phone. Quietly working for you.</p>
+<p>If you ever get stuck or have a question, my email is right here:
+<strong>support@rxorderly.com</strong>. I’m one person, and I answer
+every email myself.</p>
+<p><em>Warmly,</em></p>
+<p><strong>Jacques Fiorentino</strong></p>
+<p>Founder, Rivka SVCS LLC</p>
+<p>Maker of RxOrderly</p>
+<h2 id="how-to-use-this-manual">How to Use This Manual</h2>
+<p>The book is laid out in 24 short chapters. Each one covers a single
+piece of the app and shows you, step by step, what to tap, where, and
+why.</p>
+<p>You’ll find:</p>
+<ul>
+<li><p>Pictures of the actual screens, so you always know what to
+expect.</p></li>
+<li><p>Plain English, with no medical or computer jargon to
+decode.</p></li>
+<li><p>Helpful tips set off in highlighted boxes when something is worth
+remembering.</p></li>
+</ul>
+<p><strong>A friendly suggestion: </strong>read the first several
+chapters in order — they walk you through getting the app set up with
+your medications, doctors, pharmacies, and current supply. After that,
+the rest of the book is a reference. Whenever you need to do something —
+request a refill, prepare for a doctor visit, print your Medical ID card
+— just turn to the chapter that covers it.</p>
+<p>Bookmark the chapters you come back to most. The manual is here
+whenever you need it.</p>
+<p><strong>TABLE OF CONTENTS</strong></p>
+<p><strong>1. </strong>What RxOrderly Does for You</p>
+<p><strong>2. </strong>Getting Started</p>
+<p><strong>3. </strong>Your Home Base: The Dashboard</p>
+<p><strong>4. </strong>Your Medications List</p>
+<p><strong>5. </strong>Your Prescribers</p>
+<p><strong>6. </strong>Your Pharmacies &amp; Retailers</p>
+<p><strong>7. </strong>Supply on Hand</p>
+<p><strong>8. </strong>Logging Your Medications</p>
+<p><strong>9. </strong>Refills Made Effortless</p>
+<p><strong>10. </strong>Daily Routines</p>
+<p><strong>11. </strong>Care Activities</p>
+<p><strong>12. </strong>Reminders That Help, Not Pester</p>
+<p><strong>13. </strong>Doctor Appointment Reminders</p>
+<p><strong>14. </strong>Mental Notes</p>
+<p><strong>15. </strong>Preparing for a Doctor Visit</p>
+<p><strong>16. </strong>Your Medical ID Card</p>
+<p><strong>17. </strong>Drug Research ** PREMIUM**</p>
+<p><strong>18. </strong>Find Savings ** PREMIUM**</p>
+<p><strong>19. </strong>Your History</p>
+<p><strong>20. </strong>Settings &amp; Personalization</p>
+<p><strong>21. </strong>Backups: Your Safety Net</p>
+<p><strong>22. </strong>Your Privacy in Plain English</p>
+<p><strong>23. </strong>Tips from Jacques</p>
+<p><strong>24. </strong>Getting Help</p>
+<p class="chapter-eyebrow">
+Chapter 1
+</p>
+<h1 id="what-rxorderly-does-for-you">What RxOrderly Does for You</h1>
+<p>First and foremost, RxOrderly is going to make the day-to-day
+business of managing your prescriptions practically effortless.</p>
+<p>No more juggling pill bottles to figure out which one is running low.
+No more frantic phone calls to the pharmacy on a Sunday evening. No more
+standing at the counter trying to remember the name of the medication,
+the strength, and the doctor who prescribed it. No more lost paper
+schedules taped to the refrigerator.</p>
+<p>RxOrderly takes care of all of that for you. The app keeps a careful,
+up-to-date record of every prescription you take, knows exactly how much
+you have on hand, knows exactly when you’ll need a refill, and quietly
+speaks up when it’s time to ask for one. When that moment comes, it
+composes the refill request for you, ready to go in a single tap.</p>
+<p>That alone would be a wonderful little tool to have.</p>
+<p>But here is the joyful part: <strong>that’s just where the app
+begins.</strong></p>
+<h2 id="far-beyond-refills">Far Beyond Refills</h2>
+<p>RxOrderly is also going to help you with:</p>
+<ul>
+<li><p><strong>Your daily medication routines. </strong>Set up the times
+you take each medication, and the app will gently remind you when each
+one is due — every single dose, every single day,
+automatically.</p></li>
+<li><p><strong>Your therapies and care activities. </strong>Physical
+therapy exercises, blood sugar checks, eye drops, breathing treatments,
+anything that isn’t a pill — RxOrderly schedules and tracks it just like
+a medication.</p></li>
+<li><p><strong>Coming home from the hospital. </strong>A hospital
+discharge often comes with a stack of new prescriptions, a brand-new
+schedule, and a head still tired from being unwell. RxOrderly is the
+perfect place to land. Type in the new medications, set up the new
+schedule, and a chaotic regimen becomes orderly and accessible — usually
+within an hour of getting home.</p></li>
+<li><p><strong>Preparing for a doctor’s visit. </strong>The Doctor Visit
+Prep wizard walks you through seven friendly questions and produces a
+tidy, printable sheet you can hand your doctor — your medication list,
+the symptoms you’ve noticed, the questions you want to ask, the changes
+you’d like to discuss. No more “I had a question, but I can’t remember
+what it was.”</p></li>
+<li><p><strong>Your Medical ID card. </strong>A wallet-sized card with
+your medications, allergies, blood type, emergency contacts, and a
+special note for first responders. Print it, carry it, update it any
+time. If you ever need it, you’ll be very glad it’s there.</p></li>
+<li><p><strong>Researching your medications. </strong>Look up any drug —
+interactions, side effects, warnings — straight from official FDA and
+U.S. National Library of Medicine sources.</p></li>
+<li><p><strong>Finding ways to save. </strong>RxOrderly can tell you
+which prescription assistance programs you might qualify for, and points
+you to Medicare resources, NeedyMeds, RxAssist, and a free counselor in
+your area.</p></li>
+<li><p><strong>Keeping a complete history. </strong>Every refill, every
+dose, every visit, every adjustment — recorded and easy to look up
+later.</p></li>
+</ul>
+<p>In short, RxOrderly is your daily partner. Not a replacement for your
+doctor. Not a replacement for your pharmacist. A partner — one that
+quietly remembers everything so you don’t have to.</p>
+<div class="callout">
+<p><strong>Most Important Idea In This Book.</strong> <strong>The more
+RxOrderly knows about you, the more it does for you.</strong> <em>Please
+don’t skip this part. It is the difference between a useful app and an
+extraordinary one.</em> The app is a partner, and like any good partner,
+it can only help you with what you’ve told it. The more complete the
+information — your medications, your doses, your prescribers, your
+pharmacies, your insurance cards, your emergency contacts, your
+allergies, your blood type — the more the app can quietly do on your
+behalf. That up-front investment is what unlocks everything in this
+book. With your information filled in: Refill requests compose
+themselves, ready to send. Daily routines line up in a few taps. A
+Doctor Visit Prep sheet is ready in under a minute when you need one.
+Your Medical ID card is ready to print before anyone asks for it. Refill
+reminders fire on their own, days before you would have noticed. It is
+well worth taking the time — perhaps a quiet hour with your medication
+bottles and your insurance cards spread out in front of you — to fill
+everything in completely. And you don’t have to do it all in one
+sitting. Start and stop as many times as you’d like. Work at your own
+pace. The important thing is to do it <em>completely</em>. That time
+pays you back every single day for as long as you use the app.
+<strong>So please — take the time.</strong>  It is the kindest thing you
+can do for yourself with RxOrderly.</p>
+</div>
+<h2 id="your-privacy">Your Privacy</h2>
+<div class="callout callout-plain">
+<p>Your data is strictly private and encrypted. Nobody has access to it
+except you. <strong>Period. Full stop.</strong></p>
+</div>
+<p>Your medication names, your doctors, your pharmacies, your personal
+details — every bit of it lives on your phone and your phone alone.
+RxOrderly cannot see it. Rivka SVCS LLC, the company that makes the app,
+cannot see it. There are no servers holding your information, no
+back-door access, no way at all.</p>
+<p>When you ask the app to send a refill request, your phone composes
+the message and you send it from your own email or text app — even then,
+nothing passes through us. You’re always the one in the driver’s
+seat.</p>
+<p>When you back up your data to a file (Chapter 21), the app can
+encrypt the backup with a password only you know. We’ll walk you through
+exactly how when we get there.</p>
+<p>This is foundational. It is how the app was built from the very first
+line of code, and it will never change.</p>
+<p><em>Alright — that’s the overview. Now let’s get you set up. Chapter
+2 will have you up and running in just a few minutes.</em></p>
+<p class="chapter-eyebrow">
+Chapter 2
+</p>
+<h1 id="getting-started">Getting Started</h1>
+<p>This chapter walks you through getting RxOrderly onto your phone and
+entering your very first medication. Five minutes, maybe ten if you take
+your time. Then you’re officially under way.</p>
+<h2 id="installing-the-app">Installing the App</h2>
+<p>On an <strong>iPhone</strong>, open the App Store, tap the search
+icon, type <em>RxOrderly</em>, and tap <strong>Get</strong>. The icon
+will appear on your home screen.</p>
+<p>On an <strong>Android phone</strong>, open the Google Play Store,
+search for <em>RxOrderly</em>, and tap <strong>Install</strong>. The
+icon will appear in your apps drawer.</p>
+<p>Either way, the icon looks like this: the letters <strong>Rx</strong>
+in friendly blue. Tap it to open.</p>
+<h2 id="the-welcome-screen">The Welcome Screen</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 2-1</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Welcome screen with the Get Started button.
+</div>
+</div>
+<p>The first time you open RxOrderly, a friendly Welcome screen greets
+you with a single tappable button: <strong>Get Started</strong>.</p>
+<p>Just below the button you’ll find two small links: <strong>Terms of
+Use</strong> and <strong>Privacy Policy</strong>. Tap either to read
+them; the documents open right inside the app. There’s also a checkbox
+that says <em>“By continuing, I agree to the Terms of Use and Privacy
+Policy.”</em> Tap the checkbox to check it — the Get Started button only
+becomes active once you do. Then tap <strong>Get Started</strong>.</p>
+<h2 id="saying-yes-to-reminders">Saying Yes to Reminders</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 2-2</span> <span
+class="figure-platform">· IOS + ANDROID</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The system prompt asking permission to send reminders. Capture on both
+iPhone and Android.
+</div>
+</div>
+<p>RxOrderly will now ask whether it can send you reminders. The screen
+says: <em>“Stay on top of your medications — RxOrderly can remind you
+when it’s time to take your medication and alert you before you run out
+of a refill.”</em></p>
+<p>Tap <strong>Allow Reminders</strong>. The phone will then show one
+more system prompt to confirm. Tap <strong>Allow</strong> there too.</p>
+<p>This is the one permission RxOrderly really benefits from. Without
+it, the app can’t gently nudge you when a dose is due or when a refill
+is getting close. If you tap <strong>Maybe Later</strong>, no hard
+feelings — the app still works — but you’ll miss the quiet, well-timed
+reminders that make it feel almost magical. You can also turn reminders
+on later from the Settings page (Chapter 20).</p>
+<h2 id="adding-your-first-medication">Adding Your First Medication</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 2-3</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The first-medication form, with name and frequency filled in.
+</div>
+</div>
+<p>Next, RxOrderly invites you to add your first medication. The page is
+called <strong>Add Your First Medication</strong> and the subtitle says
+<em>“Just four things to get started.”</em></p>
+<p>The four things are:</p>
+<ul>
+<li><p><strong>Medication name. </strong>Start typing — the app will
+suggest matches from a built-in list of over 28,000 medications. Tap a
+suggestion and the name fills in with the correct spelling and
+capitalization. If your medication isn’t on the list, just type the full
+name yourself.</p></li>
+<li><p><strong>Dose. </strong>The number on your bottle. For example, if
+your bottle says “Lisinopril 10 mg tablet,” the dose is 10.</p></li>
+<li><p><strong>Unit. </strong>Tap to pick. For most pills the unit is mg
+(milligrams). Other common ones are mcg, g, mL, tabs, and
+capsules.</p></li>
+<li><p><strong>How often. </strong>Tap to pick: Daily, Twice daily,
+Three times daily, Weekly, As Needed, and several others. Pick what your
+prescription says.</p></li>
+</ul>
+<p>There’s also a fifth, optional field: <strong>How many do you have
+right now?</strong> If you can quickly count the pills in the bottle,
+type the number. If not, no worries — leave it blank and add it later
+(Chapter 8).</p>
+<div class="callout">
+<p><strong>Helpful Tip.</strong> If you take many medications, you don’t
+have to add them all at once. Add just your first one now to get the app
+set up, then add the rest from the Dashboard at your own pace. Chapter 4
+covers the full process.</p>
+</div>
+<p>When the four required fields look good, tap <strong>Start
+Tracking</strong>.</p>
+<h2 id="welcome-to-your-dashboard">Welcome to Your Dashboard</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 2-4</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+Your Dashboard, fresh after the first medication is saved.
+</div>
+</div>
+<p>You’ve just landed on the <strong>Dashboard</strong> — the home base
+of the app. From here, everything is just a tap away. Chapter 3 gives
+you the grand tour.</p>
+<p><em>Onward — Chapter 3 walks you through every corner of the
+Dashboard.</em></p>
+<p class="chapter-eyebrow">
+Chapter 3
+</p>
+<h1 id="your-home-base-the-dashboard">Your Home Base: The Dashboard</h1>
+<p>The Dashboard is where every adventure starts. It’s designed to be
+calm, uncluttered, and easy to read. Once you know your way around it,
+the rest of the app feels familiar.</p>
+<h2 id="a-quick-tour">A Quick Tour</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 3-1</span> <span
+class="figure-platform">· IOS + ANDROID</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Dashboard in default (collapsed) state. Capture on both iPhone and
+Android.
+</div>
+</div>
+<p>From top to bottom, here is what you see:</p>
+<ul>
+<li><p>The word DASHBOARD across the top.</p></li>
+<li><p>A small Settings gear in the top-right corner.</p></li>
+<li><p>A friendly hero picture below the title.</p></li>
+<li><p>Sometimes a Helpful Hints card or a Setup Checklist just under
+the picture (more on these in a moment).</p></li>
+<li><p>Three big tappable tiles, each one taking you to a different
+feature.</p></li>
+<li><p>A Show More strip to reveal three more tiles.</p></li>
+<li><p>The Task Bar running across the very bottom of the screen, with
+five small icons.</p></li>
+</ul>
+<h2 id="the-six-tiles">The Six Tiles</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 3-2</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Dashboard with all six tiles visible after tapping Show More.
+</div>
+</div>
+<p>Tap <strong>Show More</strong> and the lower three tiles slide into
+view. Here’s what each tile is for, in order:</p>
+<ul>
+<li><p><strong>Supply on Hand. </strong>Shows how much you have of each
+medication and how many days until you run out. The most-used tile in
+the app. (Chapter 7.)</p></li>
+<li><p><strong>Manage Alerts. </strong>Set up your daily medication
+reminders, view today’s schedule, and tend to anything that has alerted
+recently. (Chapter 12.)</p></li>
+<li><p><strong>Request Refill. </strong>When it’s time, this tile
+composes a refill request to your pharmacy or your doctor, ready for you
+to send. (Chapter 9.)</p></li>
+<li><p><strong>Log Medication Supply. </strong>Record a refill you just
+picked up, a new bottle you already had, or any other change in supply.
+(Chapter 8.)</p></li>
+<li><p><strong>Medications &amp;</strong>** Care Activities, Prescribers
+****&amp;**** Retailers. **Your master lists: medications, therapies,
+doctors, pharmacies. Where most of your setup happens. (Chapters 4
+through 6 and Chapter 11.)</p></li>
+<li><p><strong>My Profile &amp;</strong>** Medical ID. **Personal
+information, allergies, blood type, emergency contacts, insurance, and
+the Medical ID card itself. (Chapter 16.)</p></li>
+</ul>
+<p>Tap any tile to jump straight to its page. Each chapter of this
+manual covers one of these features in detail.</p>
+<h2 id="the-show-more-show-less-strip">The Show More / Show Less
+Strip</h2>
+<p>The Dashboard only shows three tiles by default to keep your screen
+calm. Tap <strong>Show More ▾</strong> at the bottom of the third tile
+to reveal the others. Tap <strong>Show Less ▴</strong> to tidy them away
+again. RxOrderly remembers which way you prefer it.</p>
+<h2 id="the-task-bar-at-the-bottom">The Task Bar at the Bottom</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 3-3</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+Close-up of the Task Bar — five icons across the bottom of every page.
+</div>
+</div>
+<p>Five icons across the bottom of every page in the app:</p>
+<ul>
+<li><p><strong>Home. </strong>Takes you straight back to this Dashboard,
+no matter how deep you’ve wandered.</p></li>
+<li><p><strong>Drug Research. </strong>Look up any medication —
+interactions, side effects, warnings. (Chapter 17.)</p></li>
+<li><p><strong>Savings. </strong>The hub for finding ways to lower your
+prescription costs. (Chapter 18.)</p></li>
+<li><p><strong>Doc Visit Prep. </strong>The wizard that builds a tidy
+printable sheet for your next doctor visit. (Chapter 15.)</p></li>
+<li><p><strong>Mental Notes. </strong>A scratch pad for questions and
+symptoms to bring up at your next visit. (Chapter 14.)</p></li>
+</ul>
+<p>The Task Bar is always there, even when you’re deep inside another
+page — so any of these features is one tap away from anywhere in the
+app.</p>
+<h2 id="the-settings-gear">The Settings Gear</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 3-4</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Settings gear in the top-right corner of the Dashboard.
+</div>
+</div>
+<p>Tap the small <strong>gear</strong> in the top-right corner of the
+Dashboard to open Settings. That’s where you adjust alert sounds, refill
+reminder timing, Quiet Hours, your plan, and where you create and
+restore backups. The full tour is Chapter 20.</p>
+<h2 id="helpful-hints">Helpful Hints</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 3-5</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+Dashboard showing a Helpful Hint card above the tiles.
+</div>
+</div>
+<p>From time to time, a small friendly card appears between the hero
+picture and the tiles. These are <strong>Helpful Hints</strong>: little
+reminders such as “You haven’t added a pharmacy yet” or “Your insurance
+card is missing.” Tap the card and the app takes you straight to the
+spot that needs attention.</p>
+<p>Helpful Hints can be turned off in Settings if you prefer a quieter
+screen, but most people find them a friendly companion in the first
+weeks.</p>
+<h2 id="the-setup-checklist">The Setup Checklist</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 3-6</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+Dashboard with the Setup Checklist showing setup progress.
+</div>
+</div>
+<p>The <strong>Setup Checklist</strong> is a tidy little card that
+tracks how much of your information is filled in — something like “26 of
+39 complete.” Tap any item on the checklist to jump straight to its
+setup page. Once everything is complete, the checklist quietly retires
+itself.</p>
+<div class="callout">
+<p><strong>Helpful Tip.</strong> If you’re ever lost, tap the Home icon
+on the Task Bar. It always brings you back here. The Dashboard is never
+more than one or two taps away.</p>
+</div>
+<p><em>Comfortable with the Dashboard? Wonderful. Chapter 4 starts the
+real setup work — building out your medications list.</em></p>
+<p class="chapter-eyebrow">
+Chapter 4
+</p>
+<h1 id="your-medications-list">Your Medications List</h1>
+<p>Your medications list is the beating heart of RxOrderly. Everything —
+supply tracking, refill requests, reminders, your Medical ID, Doctor
+Visit Prep — flows from the medications you’ve entered. So this chapter
+is one of the most important.</p>
+<p>Good news: it’s also genuinely easy.</p>
+<h2 id="getting-to-your-list">Getting to Your List</h2>
+<p>From the Dashboard, tap <strong>Show More</strong> if needed, then
+tap the tile labeled <strong>Medications &amp;</strong>** Care
+Activities, Prescribers ****&amp;**** Retailers<strong>. You’ll see a
+small menu with four choices: </strong>Medications<strong>,
+</strong>Care Activities<strong>, </strong>Prescribers<strong>, and
+</strong>Pharmacies / Retailers<strong>. Tap </strong>Medications**.</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 4-1</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Manage Medications page with a few entries.
+</div>
+</div>
+<p>If you haven’t added any medications yet, you’ll see a friendly
+message: <em>“No medications added yet. Tap the button above to add your
+first medication.”</em></p>
+<h2 id="adding-a-medication">Adding a Medication</h2>
+<p>Tap the big blue button at the top: <strong>+ Add Medication or
+Supplement</strong>. The Add Medication form opens, and we’ll walk
+through it field by field.</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 4-2</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The top half of the Add Medication form.
+</div>
+</div>
+<h2 id="the-name">The Name</h2>
+<p>Start typing the medication’s name. After three letters, suggestions
+appear from a built-in list of more than 28,000 medications — the same
+one the U.S. National Library of Medicine uses. Tap a suggestion and the
+name fills in with the proper spelling and capitalization.</p>
+<div class="callout">
+<p><strong>Why This Matters.</strong> The official spelling is sometimes
+a little unusual — for example, you’ll see medications spelled with
+mixed capitals like “hydroCHLOROthiazide.” That’s called tall-man
+lettering, a safety convention pharmacists use to keep similarly-named
+drugs from getting confused. Letting the app fill in the canonical name
+guarantees you and your pharmacy are talking about exactly the same
+thing.</p>
+</div>
+<p>If your medication isn’t in the list (a brand-new prescription,
+perhaps), just type the full name yourself. RxOrderly will accept
+it.</p>
+<h2 id="dose-and-unit">Dose and Unit</h2>
+<p>Look at your prescription bottle. Most labels say something like
+<strong>“Lisinopril 10 mg tablet”</strong>.</p>
+<ul>
+<li><p><strong>Dose </strong>is the number: 10.</p></li>
+<li><p><strong>Unit </strong>is what comes after: mg. Tap the Unit field
+and pick from a list. For pills, mg (milligrams) is by far the most
+common. For liquids you’ll see mL. For very small doses, mcg
+(micrograms). For insulin and a few others, IU. There’s also tabs,
+capsules, drops, and so on.</p></li>
+</ul>
+<h2 id="how-often-frequency">How Often (Frequency)</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 4-3</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Frequency picker open, listing options like Daily, Twice daily, etc.
+</div>
+</div>
+<p>Tap the <strong>Frequency</strong> field and pick from the list:
+Daily, Twice daily, Three times daily, Four times daily, Weekly,
+Monthly, As Needed, and a handful of others. Pick what matches your
+prescription instructions.</p>
+<p>This field alone is enough to make refill timing work: if you tell
+RxOrderly you take a pill twice daily, the app knows a 60-pill bottle
+lasts 30 days. (Setting up the exact <em>times</em> of day is a separate
+step, covered in Chapter 10.)</p>
+<h2 id="prescriber-and-pharmacy">Prescriber and Pharmacy</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 4-4</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The lower half of the Add Medication form — prescriber, pharmacy,
+category, icon.
+</div>
+</div>
+<p>Tap <strong>Prescriber</strong> to pick the doctor who prescribed
+this medication. If you haven’t added that doctor yet, you can pop over
+to Chapter 5 first, or simply skip this field for now and come back to
+it later. Same with <strong>Pharmacy / Retailer</strong> — pick from
+your list, or come back after Chapter 6.</p>
+<p>These fields are optional, but they’re what makes refill requests
+compose themselves automatically. Worth filling in when you can.</p>
+<h2 id="category">Category</h2>
+<p>A small label that helps RxOrderly organize your meds. The choices
+are <em>Prescription</em>, <em>Over-the-Counter</em>,
+<em>Supplement</em>, <em>Vitamin</em>, and a few others. New medications
+default to Prescription. Adjust if needed.</p>
+<h2 id="an-icon-optional-but-fun">An Icon (Optional but Fun)</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 4-5</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The icon selection sheet.
+</div>
+</div>
+<p>Tap <strong>Select Icon</strong> and choose something that looks like
+your medication — a round white tablet, a blue capsule, an inhaler, a
+liquid bottle, a patch, an injection pen. Totally optional, but it makes
+the medication easy to spot at a glance later. (Don’t worry about
+getting it perfect.)</p>
+<h2 id="saving">Saving</h2>
+<p>When the form looks good, tap <strong>Save</strong>. The medication
+appears in your list. That’s it — one down.</p>
+<p>Now repeat for each medication you take. Most people are done in
+fifteen or twenty minutes, even with a long list.</p>
+<div class="callout">
+<p><strong>Pace Yourself.</strong> You don’t have to enter every
+medication in one sitting. Stop whenever you’d like and come back later.
+Your list saves automatically. Just remember to come back and finish —
+the app gets dramatically more useful once your full list is in.</p>
+</div>
+<h2 id="editing-a-medication">Editing a Medication</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 4-6</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+Edit Medication page on an existing entry.
+</div>
+</div>
+<p>Tap any medication in your list to view its details, then tap the
+pencil icon to edit. Change anything that needs updating — a new dose, a
+different unit, a new prescriber — and tap <strong>Save</strong>.</p>
+<h2 id="changing-prescriber-or-pharmacy">Changing Prescriber or
+Pharmacy</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 4-7</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The “Change Pharmacy” confirmation.
+</div>
+</div>
+<p>If your doctor changes, or you switch pharmacies, tap <strong>Change
+Prescriber</strong> or <strong>Change Pharmacy</strong> on the
+medication’s page. RxOrderly will confirm before making the change, then
+update the link.</p>
+<h2 id="deactivating-not-deleting">Deactivating, Not Deleting</h2>
+<p>If you stop taking a medication, please don’t delete it. Instead,
+edit the medication and switch off the <strong>Active</strong>
+toggle.</p>
+<p>Here’s why: your history of doses, refills, and adjustments stays
+intact — useful for your records, your doctor, and your own peace of
+mind. The inactive medication simply drops off the daily lists.</p>
+<p>If you start taking it again later, just switch
+<strong>Active</strong> back on.</p>
+<p><em>Once your medications are in, Chapter 5 will walk you through
+adding the doctors who prescribe them.</em></p>
+<p class="chapter-eyebrow">
+Chapter 5
+</p>
+<h1 id="your-prescribers">Your Prescribers</h1>
+<p>Doctors, nurse practitioners, physician assistants, specialists,
+clinics — in RxOrderly we call them all <strong>prescribers</strong>,
+since any one of them might write a prescription.</p>
+<h2 id="why-prescribers-matter">Why Prescribers Matter</h2>
+<p>Three good reasons to take a few minutes to add yours:</p>
+<ul>
+<li><p>Refill requests need to know who prescribed each medication. The
+right doctor’s contact details are dropped into the message for you,
+automatically.</p></li>
+<li><p>Doctor Visit Prep sheets (Chapter 15) need to know whom you’re
+seeing — the sheet is addressed to a specific doctor.</p></li>
+<li><p>Your Medical ID card (Chapter 16) lists your prescribers, so
+paramedics and emergency room staff know who to call.</p></li>
+</ul>
+<h2 id="getting-to-your-prescribers-list">Getting to Your Prescribers
+List</h2>
+<p>From the Dashboard, tap <strong>Show More</strong>, then the combined
+tile, then <strong>Prescribers</strong>.</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 5-1</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Manage Prescribers list.
+</div>
+</div>
+<h2 id="adding-a-prescriber">Adding a Prescriber</h2>
+<p>Tap <strong>+ Add Prescriber</strong>. The Add Prescriber form
+opens.</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 5-2</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The top of the Add Prescriber form.
+</div>
+</div>
+<h2 id="the-name-and-specialty">The Name and Specialty</h2>
+<p>Type your doctor’s name as you’d want it shown on your refill
+requests — for example, <em>Dr. Sarah Chen</em>.</p>
+<p>Tap <strong>Specialty (optional)</strong> to pick from a list of
+common specialties — Cardiology, Family Medicine, Endocrinology,
+Pulmonology, and so on. Skip if you’d rather not bother.</p>
+<h2 id="this-is-a-clinic-or-institution">“This Is a Clinic or
+Institution”</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 5-3</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The toggle for “This is a clinic or institution.”
+</div>
+</div>
+<p>If you’re entering a place rather than an individual — a sleep
+clinic, an outpatient center, a group practice — switch on the toggle
+that says <strong>“This is a clinic or institution.”</strong> The
+Specialty field disappears (institutions don’t have a single specialty),
+and the rest of the form continues normally.</p>
+<h2 id="address-phone-email">Address, Phone, Email</h2>
+<p>Enter whatever you have on hand from your appointment card or the
+practice’s website. Phone numbers format themselves nicely as you type.
+The email field is what RxOrderly uses to address a refill request to
+this prescriber, if your doctor’s office accepts refill requests by
+email.</p>
+<h2 id="primary-prescriber">Primary Prescriber</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 5-4</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The bottom of the form — Notes, Active, Primary Prescriber, Refill
+Contact.
+</div>
+</div>
+<p>Switch on <strong>Primary Prescriber</strong> for your main doctor —
+the one who manages most of your care. They’ll appear first in lists and
+be suggested as the default contact on refill requests. You can only
+have one Primary Prescriber at a time; choosing a new one quietly moves
+the flag from the old one.</p>
+<h2 id="refill-contact">Refill Contact</h2>
+<p>Switch on <strong>Refill Contact</strong> if this prescriber’s office
+is somewhere you’d send a refill request. Most of your doctors will be
+Refill Contacts. Switch it off for, say, a specialist who only sees you
+for consultations and doesn’t manage prescriptions — that way they don’t
+clutter up your refill picker.</p>
+<h2 id="notes">Notes</h2>
+<p>The <strong>Notes</strong> field is for anything else you want to
+remember: office hours, your favorite nurse’s name, a parking tip, the
+receptionist’s direct extension. RxOrderly doesn’t do anything special
+with this text — it’s just there for you.</p>
+<h2 id="saving-1">Saving</h2>
+<p>Tap <strong>Save</strong>. Repeat for each of your prescribers. Even
+seniors with long histories usually have just a handful, so this part
+goes quickly.</p>
+<h2 id="inactive-prescribers">Inactive Prescribers</h2>
+<p>Same idea as medications: when a doctor retires or you stop seeing
+them, switch off the <strong>Active</strong> toggle. They’ll drop off
+the daily lists but stay in your history. Turn them back on anytime if
+you go back.</p>
+<p><em>Halfway through setup. Chapter 6 covers your pharmacies and other
+retailers — the places your prescriptions actually come from.</em></p>
+<p class="chapter-eyebrow">
+Chapter 6
+</p>
+<h1 id="your-pharmacies-retailers">Your Pharmacies ****&amp;****
+Retailers</h1>
+<p>Pharmacies, mail-order suppliers, the vitamin shop on the corner — in
+RxOrderly we call them all <strong>retailers</strong>, since any one of
+them might be where you go to refill or restock.</p>
+<h2 id="why-retailers-matter">Why Retailers Matter</h2>
+<p>Just like prescribers, the more RxOrderly knows about the places that
+supply your medications, the more it can do for you:</p>
+<ul>
+<li><p>Refill requests go to a specific pharmacy — the right phone
+number, the right email, the right address. The app fills all that in
+for you.</p></li>
+<li><p>You may use more than one pharmacy — a local one for everyday
+medications, a mail-order one for the maintenance prescriptions.
+RxOrderly lets you assign each medication to the right pharmacy and
+routes refills accordingly.</p></li>
+<li><p>Your Medical ID card (Chapter 16) can list your pharmacy so first
+responders and emergency room staff know where your prescription history
+lives.</p></li>
+</ul>
+<h2 id="getting-to-your-retailers-list">Getting to Your Retailers
+List</h2>
+<p>From the Dashboard, tap <strong>Show More</strong>, then the combined
+tile, then <strong>Pharmacies</strong> (sometimes labeled
+<strong>Retailers</strong>).</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 6-1</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Manage Retailers list.
+</div>
+</div>
+<h2 id="adding-a-pharmacy">Adding a Pharmacy</h2>
+<p>Tap <strong>+ Add Pharmacy or Retailer</strong>. The Add Retailer
+form opens.</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 6-2</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The top of the Add Retailer form — name, address, phone.
+</div>
+</div>
+<h2 id="the-name-1">The Name</h2>
+<p>Type the pharmacy’s name. If you use more than one branch of a chain,
+include the location — for example, “Walgreens on Main Street” or “CVS
+at the airport.” A short, recognizable name is best.</p>
+<h2 id="the-address-with-a-friendly-search">The Address (with a Friendly
+Search)</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 6-3</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+Address auto-complete suggestions while typing.
+</div>
+</div>
+<p>Start typing the address. After a few letters, the app suggests
+matches from a built-in directory of U.S. addresses. Tap a suggestion
+and the street, city, state, and ZIP code all fill in at once. You can
+also type the address by hand if you’d rather.</p>
+<h2 id="phone-number">Phone Number</h2>
+<p>The number you’d call to ask for a refill. Type it and the app
+formats it nicely as <em>(415) 555-0100</em> while you go.</p>
+<div class="callout">
+<p><strong>Helpful Tip.</strong> If your pharmacy has a separate
+prescription refill line (many do — it’s often a different number from
+the main store), use that one. When you request a refill by phone,
+RxOrderly will offer this number to call.</p>
+</div>
+<h2 id="refill-contact-pickup-and-delivery">Refill Contact, Pickup, and
+Delivery</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 6-4</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The lower half of the form — refill contact, delivery options, notes.
+</div>
+</div>
+<p>Switch on <strong>Refill Contact</strong> if this is somewhere you’d
+send refill requests. Most pharmacies will be Refill Contacts; a vitamin
+shop, on the other hand, probably won’t.</p>
+<p>If the pharmacy offers <strong>delivery</strong>, switch on the
+delivery option and enter the address you’d like medications delivered
+to — usually your home, but feel free to use a different address (a son
+or daughter’s home, an assisted-living facility, anywhere convenient).
+This becomes the default delivery address whenever you request a refill
+from this pharmacy. You can still override it on any individual refill
+if you need to.</p>
+<h2 id="notes-1">Notes</h2>
+<p>Anything else you want to remember — opening hours, your pharmacist’s
+name, parking, the secret good entrance around the back.</p>
+<h2 id="saving-2">Saving</h2>
+<p>Tap <strong>Save</strong>. Repeat for any other pharmacies you
+use.</p>
+<h2 id="more-than-one-pharmacy-welcome-to-the-club.">More Than One
+Pharmacy? Welcome to the Club.</h2>
+<p>Many seniors use a mix: a local pharmacy for occasional and
+short-term prescriptions, plus a mail-order pharmacy for the maintenance
+ones. Add them all here. When you go to refill a medication (Chapter 9),
+RxOrderly uses the pharmacy you assigned to that specific medication —
+so refills always go to the right place automatically.</p>
+<p><em>Setup is well under way! Your medications are in, your doctors
+are in, your pharmacies are in. Chapter 7 will show you how to read the
+most-used screen in the app: Supply on Hand.</em></p>
+<p class="chapter-eyebrow">
+Chapter 7
+</p>
+<h1 id="supply-on-hand">Supply on Hand</h1>
+<p>Welcome to the most-used screen in the entire app. <strong>Supply on
+Hand</strong> answers the question we all want a quiet, honest answer
+to: <em>am I going to run out of anything soon?</em></p>
+<p>Now that your medications, doctors, and pharmacies are in, this
+screen is genuinely useful.</p>
+<h2 id="getting-there">Getting There</h2>
+<p>From the Dashboard, tap the very first tile: <strong>Supply on
+Hand</strong>. (It’s the one with the pill bottle icon.)</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 7-1</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Supply on Hand list showing several medications with their days left
+and units on hand.
+</div>
+</div>
+<h2 id="reading-a-row">Reading a Row</h2>
+<p>Each medication gets one neat row. From left to right, every row
+shows:</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 7-2</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+A single Supply on Hand row, close up.
+</div>
+</div>
+<ul>
+<li><p><strong>The medication name </strong>— with its icon if you
+picked one.</p></li>
+<li><p><strong>Days Left </strong>— how many days until you run out,
+based on the dose and frequency you entered. The number turns amber when
+it’s under two weeks, red when it’s under a week. A peaceful gray when
+you’ve got plenty.</p></li>
+<li><p><strong>On Hand </strong>— how many units (pills, mL of liquid,
+etc.) you currently have. The app keeps this number current as you log
+refills and routine doses.</p></li>
+<li><p><strong>Last Unit </strong>— the date your supply is projected to
+run out, in plain English (“Aug 14”).</p></li>
+</ul>
+<div class="callout">
+<p><strong>Helpful Tip.</strong> If a row has a small clock icon beside
+it, that means RxOrderly has already noticed it’s getting low and queued
+up a refill reminder for you. The app is looking out for you.</p>
+</div>
+<h2 id="tapping-a-row-for-history">Tapping a Row for History</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 7-3</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The History sheet that appears when you tap a Supply row.
+</div>
+</div>
+<p>Tap any row to see that medication’s full <strong>History</strong> —
+refills, doses, and adjustments, sorted newest first. Great for
+answering questions like “when did I last refill this?” or “has the dose
+changed recently?”</p>
+<h2 id="what-if-a-number-looks-wrong">What If a Number Looks Wrong?</h2>
+<p>If “On Hand” doesn’t match what’s actually in your bottle — maybe you
+got an extra month, maybe you dropped a pill and it rolled under the
+couch — you can fix it in a few taps. Chapter 8 covers logging an
+<em>Adjustment</em>, which is the polite way to say “please add (or
+subtract) this many.”</p>
+<p><em>Now that you can read Supply on Hand, Chapter 8 covers how it
+gets updated: logging your refills, manual inventory, and
+adjustments.</em></p>
+<p class="chapter-eyebrow">
+Chapter 8
+</p>
+<h1 id="logging-your-medications">Logging Your Medications</h1>
+<p>The Supply on Hand numbers from Chapter 7 stay accurate because of
+one quiet habit: whenever your supply changes, you tell the app. This
+chapter is about that telling.</p>
+<p>Good news: it’s genuinely quick — and most of the time RxOrderly
+handles it automatically.</p>
+<h2 id="when-youll-use-this">When You’ll Use This</h2>
+<p>Three situations call for it:</p>
+<ul>
+<li><p><strong>You picked up a refill. </strong>The pharmacy handed you
+a new bottle. Log it — supply jumps up.</p></li>
+<li><p><strong>You already had medication when you started the app.
+</strong>Or you found half a bottle in the medicine cabinet. Log it as
+“manual inventory.”</p></li>
+<li><p><strong>The number is off and needs a small correction.
+</strong>Maybe you dropped one, or counted a bit differently. Log an
+“adjustment.”</p></li>
+</ul>
+<h2 id="getting-there-1">Getting There</h2>
+<p>From the Dashboard, tap <strong>Show More</strong>, then tap
+<strong>Log Medication Supply</strong>.</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 8-1</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Receive Medication page top, with three mode tabs.
+</div>
+</div>
+<p>You’ll see the page titled <strong>Receive Medication</strong>, with
+three tabs across the top: <strong>Fill/Refill</strong>, <strong>Manual
+Inventory</strong>, and <strong>Adjustment</strong>. Pick the one that
+matches your situation.</p>
+<h2 id="recording-a-refill">Recording a Refill</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 8-2</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+Prescription Fill / Refill mode with form filled in.
+</div>
+</div>
+<p>With <strong>Fill/Refill</strong> selected:</p>
+<ul>
+<li><p><strong>Medication. </strong>Tap to pick from your list. (Only
+your active medications show here.)</p></li>
+<li><p><strong>How many units did you receive? </strong>Type the count
+from the bottle — e.g., 30 for a 30-day supply at one tablet a
+day.</p></li>
+<li><p><strong>Date received. </strong>Defaults to today. Tap it if
+you’re catching up from a few days ago.</p></li>
+</ul>
+<p>Then tap <strong>Save</strong>. Supply on Hand updates instantly —
+you should see the “Days Left” number jump up the next time you visit
+it.</p>
+<div class="callout">
+<p><strong>Helpful Tip.</strong> The pharmacy receipt usually shows the
+exact count somewhere in small print, often labeled “Qty” or “Quantity
+dispensed.” That’s the number to enter.</p>
+</div>
+<h2 id="recording-manual-inventory">Recording Manual Inventory</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 8-3</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+Manual Inventory mode, used to enter starting supply.
+</div>
+</div>
+<p>The <strong>Manual Inventory</strong> tab is for setting your
+<em>starting</em> supply — medication you already had on hand when you
+started using the app. Same three fields as a refill. RxOrderly records
+this as a separate kind of entry (not a pharmacy refill), so your
+history stays honest.</p>
+<h2 id="making-an-adjustment">Making an Adjustment</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 8-4</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+Adjustment mode with Increase Supply and Decrease Supply options.
+</div>
+</div>
+<p>The <strong>Adjustment</strong> tab is for corrections of all kinds.
+Pick <strong>Increase Supply</strong> if you found more medication than
+the app thought you had, or <strong>Decrease Supply</strong> if you have
+less — you dropped one, lost a bottle, gave one to a family member. Type
+the “Adjust by” number and a quick reason (free-form text) for your own
+records. Tap <strong>Save</strong>.</p>
+<h2 id="logging-more-than-one-medication-at-once">Logging More Than One
+Medication at Once</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 8-5</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+Multiple medication rows added in a single Receive Medication session.
+</div>
+</div>
+<p>If you came home from the pharmacy with several bottles in one bag,
+you can log them all in one trip. After the first medication, tap the
+<strong>+ Add medication</strong> link at the bottom of the form and
+another row appears. Repeat until you’ve listed every bottle from the
+bag, then tap <strong>Save</strong> once for the lot of them.</p>
+<p><em>Your supply numbers stay tidy with a few quick taps now and then.
+Next, in Chapter 9, the part that makes refills nearly
+automatic.</em></p>
+<p class="chapter-eyebrow">
+Chapter 9
+</p>
+<h1 id="refills-made-effortless">Refills Made Effortless</h1>
+<p>This is the chapter that pays you back the most for the time you’ve
+invested in setting up the app. RxOrderly composes refill requests for
+you, addressed to the right pharmacy or the right doctor, ready for you
+to send in your preferred way.</p>
+<p>You always send the request yourself — from your own email, your own
+text app, or your own phone. RxOrderly never transmits anything on your
+behalf. (See Chapter 22 for why we built it that way.)</p>
+<h2 id="getting-there-2">Getting There</h2>
+<p>Three good doorways into a refill request:</p>
+<ul>
+<li><p>The Request Refill tile on the Dashboard.</p></li>
+<li><p>A refill reminder notification on your phone — tap it and the app
+opens straight to this page.</p></li>
+<li><p>A Helpful Hint card on the Dashboard suggesting a refill is
+due.</p></li>
+</ul>
+<h2 id="choosing-what-to-refill">Choosing What to Refill</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 9-1</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Request Refill page listing your active medications with current
+supply.
+</div>
+</div>
+<p>At the top of the Request Refill page, you’ll see all your active
+medications, each with its current supply line (“14 days left” or “Out:
+ran out 2 days ago,” for example). Tap each medication you want to
+refill — a check mark appears.</p>
+<p>If RxOrderly opened this page in response to a refill reminder, the
+relevant medication is already checked for you.</p>
+<h2 id="pharmacy-or-doctor">Pharmacy or Doctor?</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 9-2</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Contact picker — choose Pharmacy or Prescriber.
+</div>
+</div>
+<p>Tap <strong>Contact: Pharmacy</strong> or <strong>Contact:
+Prescriber</strong>.</p>
+<ul>
+<li><p><strong>Most refills go to your pharmacy </strong>— the bottle
+has refills remaining, so the pharmacy just fills it.</p></li>
+<li><p><strong>You’ll write to your prescriber </strong>when the refills
+on the bottle have run out and you need a new prescription before the
+pharmacy can fill it.</p></li>
+</ul>
+<h2 id="how-to-send-it">How to Send It</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 9-3</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Method picker — Voice, Text, or Email.
+</div>
+</div>
+<p>Pick the method that suits you. RxOrderly shows you only the methods
+your selected contact actually accepts — based on the phone numbers and
+email you entered when you added them.</p>
+<ul>
+<li><p><strong>Voice. </strong>RxOrderly writes a friendly call script
+that fits on your screen — everything you need to say, in order. Tap to
+dial the pharmacy and read along.</p></li>
+<li><p><strong>Text. </strong>A polished SMS is composed and waiting.
+Tap Open &amp; Send and your phone’s text app opens with the message
+already typed.</p></li>
+<li><p><strong>Email. </strong>Same idea, but for email. The message
+includes everything the pharmacy needs to identify the
+prescription.</p></li>
+</ul>
+<h2 id="reviewing-the-message">Reviewing the Message</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 9-4</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The composed message preview before sending.
+</div>
+</div>
+<p>Whichever method you picked, RxOrderly shows you the composed message
+right on screen first, so there are no surprises. Have a quick read.
+Everything you’d want included is there: your name, the medication, the
+dose, the prescription number if available, and a friendly request.</p>
+<h2 id="delivery-address">Delivery Address</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 9-5</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The delivery address editor, used when the pharmacy offers delivery.
+</div>
+</div>
+<p>If the pharmacy delivers, RxOrderly will offer a <strong>Delivery
+address</strong> section in the message. The default address comes from
+how you set up that pharmacy in Chapter 6. To override for just this one
+request — say, you’re visiting family in a different city — tap
+<strong>Change</strong> and enter the alternative address. Tick the
+<strong>Remember this address for future refills</strong> box if you’d
+like RxOrderly to keep using it from now on.</p>
+<p>There’s also a <strong>Delivery note</strong> field for one-off
+instructions like “leave with neighbor in 4B” or “call #102 on
+intercom.”</p>
+<h2 id="opening-sending-and-confirming">Opening, Sending, and
+Confirming</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 9-6</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The confirmation step after the user has sent the request from their own
+app.
+</div>
+</div>
+<p>Tap <strong>Open &amp;</strong>** Send**. Your phone’s phone app,
+text app, or email app opens with everything pre-filled. Tap Send (in
+that app), or in the case of a voice call, dial and read the script.</p>
+<p>Come back to RxOrderly and tap <strong>I’ve Submitted My Refill
+Request</strong>. The app records the request and quietly remembers, so
+it won’t remind you about that same medication again until your supply
+is low next time.</p>
+<div class="callout">
+<p><strong>Helpful Tip.</strong> The Send me a copy (BCC) option for
+email refills puts you on the BCC line of the message — great for
+keeping a paper trail in your own inbox without crowding the pharmacy’s
+view of the conversation.</p>
+</div>
+<h2 id="if-a-contact-is-missing-information">If a Contact Is Missing
+Information</h2>
+<p>If you see a polite note that says <em>“No refill contact info on
+file. Edit this contact to add a phone number, text number, or
+email,”</em> it means the pharmacy or prescriber you picked doesn’t have
+the contact method needed for the method you chose. Tap into the contact
+(Chapter 5 or Chapter 6) and add what’s missing.</p>
+<p><em>Refill requests off your shoulders! Chapter 10 sets up daily
+routines — the gentle reminders that make sure you take what you have on
+hand.</em></p>
+<p class="chapter-eyebrow">
+Chapter 10
+</p>
+<h1 id="daily-routines">Daily Routines</h1>
+<p>A <strong>daily routine</strong> is a recurring time of day — say,
+“7:30 a.m. with breakfast” or “9:00 p.m. before bed” — that links to one
+or more medications. RxOrderly gently reminds you when each routine
+comes due, then offers a clean way to tap through the medications and
+confirm you’ve taken them.</p>
+<p>It’s the difference between an app that <em>knows</em> your
+medications and an app that <em>helps you take</em> them.</p>
+<h2 id="getting-there-3">Getting There</h2>
+<p>From the Dashboard, tap <strong>Manage Alerts</strong>. You’ll see
+your day laid out as a schedule, with any existing routines already on
+it. To add a new one, tap the <strong>+ New Routine</strong> button at
+the top.</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 10-1</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Routine Editor opens for a new routine.
+</div>
+</div>
+<p>The page title says <strong>Create routine</strong>, with the
+subtitle <em>“Pick a time, a cadence, and the medications.”</em> That’s
+the whole job: three small choices.</p>
+<h2 id="when-the-time-of-day">When (the Time of Day)</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 10-2</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The When (time of day) picker.
+</div>
+</div>
+<p>Tap <strong>When</strong> and pick the hour and minute. Use a time
+that lines up with something you already do every day — breakfast,
+brushing your teeth, the evening news — and the habit will stick
+faster.</p>
+<h2 id="how-often-the-cadence">How Often (the Cadence)</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 10-3</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The cadence picker — daily, weekdays, weekends, specific days.
+</div>
+</div>
+<p>Tap <strong>How often</strong> and choose: <strong>Every
+day</strong>, <strong>Weekdays only</strong>, <strong>Weekends
+only</strong>, or specific days of the week. Most routines are daily,
+but you can mix and match if you’d like.</p>
+<h2 id="which-medications">Which Medications</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 10-4</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The medication picker — check the meds taken at this time.
+</div>
+</div>
+<p>Tap <strong>Which medications</strong> and check off every medication
+you take at this time of day. The list shows only your active
+medications, each with its dose and frequency, so it’s easy to pick the
+right ones.</p>
+<h2 id="saving-3">Saving</h2>
+<p>Tap <strong>Save routine</strong>. RxOrderly schedules the reminder
+and the routine appears on your <strong>Manage Alerts</strong>
+day-view.</p>
+<h2 id="how-a-routine-plays-out">How a Routine Plays Out</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 10-5</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+A morning routine showing on the Manage Alerts day-view.
+</div>
+</div>
+<p>At the scheduled time, your phone shows a quiet notification:
+<em>“Morning routine — 3 medications.”</em> Tap it and RxOrderly opens
+to a review sheet listing each medication, its dose, and a Take Now
+button. Tap each one as you take it; the supply count drops
+automatically.</p>
+<div class="callout">
+<p><strong>Helpful Tip.</strong> If you take a routine’s medications
+without your phone in hand, no problem — come back to the app later and
+tap them all done at once. Or, if you genuinely missed a dose, the
+review sheet has a polite Skip option for each medication. Skips are
+recorded for your history, so your doctor can see them at your next
+visit.</p>
+</div>
+<h2 id="editing-or-deleting-a-routine">Editing or Deleting a
+Routine</h2>
+<p>Tap any routine on the Manage Alerts page to edit it — change the
+time, the cadence, or the medications. There’s a delete option too if a
+routine has run its course. Inactive routines, like inactive
+medications, can be reactivated later.</p>
+<p><em>Routines covered. Chapter 11 is about Care Activities — the
+non-medication routines like inhalers, walks, and blood pressure
+checks.</em></p>
+<p class="chapter-eyebrow">
+Chapter 11
+</p>
+<h1 id="care-activities">Care Activities</h1>
+<p>Not everything a doctor asks you to do every day comes in a pill
+bottle. Use your inhaler twice a day. Take a thirty-minute walk after
+lunch. Check your blood pressure on Tuesday and Friday mornings. Drink a
+glass of water with every meal. These are <strong>care
+activities</strong> — the non-medication parts of your daily routine —
+and RxOrderly tracks them with the same care it gives your
+prescriptions.</p>
+<h2 id="getting-there-4">Getting There</h2>
+<p>From the Dashboard, tap the combined Medications &amp; Care
+Activities tile, then choose <strong>Care Activities</strong>.</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 11-1</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Care Activities list, with a few entries already in.
+</div>
+</div>
+<h2 id="adding-a-care-activity">Adding a Care Activity</h2>
+<p>Tap <strong>+ Add Care Activity</strong>. The Add Care Activity form
+opens.</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 11-2</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Add Care Activity form, with name, categories, and frequency fields.
+</div>
+</div>
+<h2 id="the-name-2">The Name</h2>
+<p>Give your activity a name that’ll be friendly on the schedule —
+<em>Morning walk</em>, <em>Albuterol inhaler</em>, <em>Blood pressure
+check</em>, <em>Wound dressing change</em>. Whatever you’ll recognize at
+a glance.</p>
+<h2 id="picking-a-category">Picking a Category</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 11-3</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The 12 category chips: Inhaler, Breathing, Walking, Exercise,
+Stretching, Hydration, Weighing, Blood Pressure, Blood Glucose, Wound
+Care, Meditation, Custom.
+</div>
+</div>
+<p>Tap one of the small category chips. The choices are: <em>Inhaler,
+Breathing, Walking, Exercise, Stretching, Hydration, Weighing, Blood
+Pressure, Blood Glucose, Wound Care, Meditation</em>, and
+<em>Custom</em>.</p>
+<p>If your activity doesn’t fit any of the named categories, pick
+<strong>Custom</strong> — a small “Custom label” field appears so you
+can name your own.</p>
+<h2 id="frequency">Frequency</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 11-4</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The frequency picker (Daily, Twice daily, Three times daily, Weekly,
+etc.).
+</div>
+</div>
+<p>Tap <strong>Frequency</strong> and pick: Daily, Twice daily, Three
+times daily, Weekly, As Needed, and the rest of the same list you saw
+for medications.</p>
+<h2 id="duration-instructions-and-notes">Duration, Instructions, and
+Notes</h2>
+<ul>
+<li><p><strong>Duration </strong>(optional) — how many minutes the
+activity takes. Handy for walks and stretching.</p></li>
+<li><p><strong>Instructions </strong>(optional) — what to remember in
+the moment: “Two puffs, hold breath 10 seconds”; “Use small monitor on
+left arm.”</p></li>
+<li><p><strong>Notes </strong>(optional) — any other detail you’d like
+to remember.</p></li>
+</ul>
+<h2 id="saving-4">Saving</h2>
+<p>Tap <strong>Save Care Activity</strong>. You can now add a daily
+routine for it just like you did for medications (Chapter 10), and the
+reminders behave exactly the same way.</p>
+<h2 id="care-activities-on-your-daily-schedule">Care Activities on Your
+Daily Schedule</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 11-5</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Manage Alerts day-view showing both medication routines and care
+activities woven together.
+</div>
+</div>
+<p>When you add a routine that includes a care activity, RxOrderly shows
+it on the day-view right alongside your medication routines. Your
+inhaler, your morning walk, and your morning pills can all share the
+same 7:30 a.m. reminder if that’s how your day actually flows.</p>
+<div class="callout">
+<p><strong>Helpful Tip.</strong> The category chips aren’t just
+decoration. RxOrderly uses them on your Doctor Visit Prep sheet (Chapter
+15) to group similar activities together — so when your doctor asks
+“how’s your blood pressure tracking going?” that section of the printout
+is right there waiting.</p>
+</div>
+<p><em>Reminders, routines, and care activities all set up. In Chapter
+12 we look at all of them together: the Manage Alerts page.</em></p>
+<p class="chapter-eyebrow">
+Chapter 12
+</p>
+<h1 id="reminders-that-help-not-pester">Reminders That Help, Not
+Pester</h1>
+<p>RxOrderly’s reminders are designed to be the friendliest part of the
+app: enough to keep you on track, never so much that they feel like
+nagging. This chapter is a tour of the page where all of them live.</p>
+<h2 id="getting-there-5">Getting There</h2>
+<p>From the Dashboard, tap <strong>Manage Alerts</strong>. The page that
+opens shows everything the app is going to remind you about —
+medications, care activities, refills, and doctor appointments — all in
+one place.</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 12-1</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Manage Alerts page on the Day View tab, showing today’s reminders.
+</div>
+</div>
+<h2 id="the-three-tabs">The Three Tabs</h2>
+<p>Three small tabs sit just below the header:</p>
+<ul>
+<li><p><strong>Day View. </strong>Today’s schedule, hour by hour, with
+each routine and reminder on the timeline. Use the ‹ and › arrows to
+peek at yesterday or tomorrow, or tap Today to come back.</p></li>
+<li><p><strong>Routines. </strong>All your saved daily routines from
+Chapter 10, in one list. Tap any one to edit or remove it.</p></li>
+<li><p><strong>Individual Alerts. </strong>One-off reminders — like a
+doctor appointment, a one-time post-surgery instruction, or a single-day
+task — live here.</p></li>
+</ul>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 12-2</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Routines tab listing each saved routine.
+</div>
+</div>
+<h2 id="selecting-several-at-once">Selecting Several at Once</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 12-3</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The bottom bar showing “2 selected” with the Clear Selected action
+available.
+</div>
+</div>
+<p>Need to silence three reminders before a quiet morning, or clear
+several from your schedule at once? Tap each one to select it — a small
+bar slides up from the bottom showing how many you’ve selected, plus a
+<strong>Clear Selected</strong> button. Saves a lot of tapping.</p>
+<h2 id="the-reminder-itself">The Reminder Itself</h2>
+<p>When a reminder fires, your phone shows a quiet notification: the
+routine name and a count of medications. Tap it and RxOrderly opens
+directly to the review sheet for that routine. From there, you can:</p>
+<ul>
+<li><p><strong>Tap Take Now </strong>on each medication as you take
+it.</p></li>
+<li><p><strong>Tap Skip </strong>if you missed one or are intentionally
+not taking it.</p></li>
+<li><p><strong>Tap Take All </strong>to mark every medication in the
+routine as taken at once.</p></li>
+</ul>
+<h2 id="alert-sounds-and-quiet-hours">Alert Sounds and Quiet Hours</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 12-4</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Settings section showing alert sound choice and Quiet Hours.
+</div>
+</div>
+<p>Reminder behavior is controlled from <strong>Settings</strong> (the
+gear in the top-right of the Dashboard). A few options worth
+knowing:</p>
+<ul>
+<li><p><strong>Alert sound. </strong>RxOrderly uses a gentle,
+distinctive chime by default. Tap to preview a few options and pick the
+one you like best.</p></li>
+<li><p><strong>Quiet Hours. </strong>Set a start and end time during
+which reminders show silently — visible on your phone but not making
+noise. Perfect for naps, sleeping, religious services, or any other
+quiet stretch.</p></li>
+<li><p><strong>Refill reminder lead time. </strong>How far in advance to
+remind you about low supply — seven days, ten days, two weeks. Default
+is ten days.</p></li>
+</ul>
+<div class="callout">
+<p><strong>Helpful Tip.</strong> If reminders ever feel like too much,
+the answer is rarely to turn them off — it’s usually to combine
+routines. Three separate breakfast reminders at 7:00, 7:01, and 7:02 are
+exhausting; one breakfast routine with three medications attached to it
+is peaceful. (Chapter 10 covers routines.)</p>
+</div>
+<p><em>Speaking of one-off reminders, Chapter 13 covers the most
+important kind: doctor appointments.</em></p>
+<p class="chapter-eyebrow">
+Chapter 13
+</p>
+<h1 id="doctor-appointment-reminders">Doctor Appointment Reminders</h1>
+<p>A doctor appointment reminder is a one-off entry that wakes you up
+gently the night before and (if you’d like) again the morning of, so an
+important visit never sneaks up on you. RxOrderly stores all of them in
+one tidy list.</p>
+<h2 id="getting-there-6">Getting There</h2>
+<p>From the Dashboard, tap <strong>Manage Alerts</strong>, then look for
+the <strong>Doctor Appointment Reminders →</strong> link. (You can also
+reach the same page from the “Add Reminder” flow on an empty
+schedule.)</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 13-1</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The list of upcoming appointment reminders.
+</div>
+</div>
+<h2 id="adding-a-reminder">Adding a Reminder</h2>
+<p>Tap <strong>+ Add Reminder</strong>. A clean little form slides
+up.</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 13-2</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Add Appointment Reminder form.
+</div>
+</div>
+<ul>
+<li><p><strong>Doctor. </strong>Type the name. Required.</p></li>
+<li><p><strong>Specialty. </strong>Optional — e.g.,
+“Cardiology.”</p></li>
+<li><p><strong>Date. </strong>Tap to pick the appointment date.</p></li>
+<li><p><strong>Appointment time set. </strong>Switch this on if you know
+the exact time and want to include it; a time picker appears.</p></li>
+<li><p><strong>Night before reminder. </strong>Switch on and pick a time
+of day for the reminder to fire the evening before.</p></li>
+<li><p><strong>Morning of reminder. </strong>Same idea, for the morning
+of the appointment.</p></li>
+<li><p><strong>Notes. </strong>Anything else — the room number, the
+doctor’s phone extension, what to bring, “fasting required” for
+bloodwork.</p></li>
+</ul>
+<h2 id="confirming-and-tweaking">Confirming and Tweaking</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 13-3</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The “Reminder Set” confirmation dialog.
+</div>
+</div>
+<p>Tap <strong>Add Reminder</strong>. RxOrderly shows a quick
+confirmation — something like <em>“You’ll be notified the night before
+for your appointment with Dr. Chen on August 14.”</em> Done.</p>
+<p>To change a reminder later, tap it in the list, then tap
+<strong>Edit</strong>. To remove one entirely, tap
+<strong>Delete</strong>.</p>
+<h2 id="what-happens-when-it-fires">What Happens When It Fires</h2>
+<p>At each reminder time you set, your phone shows a friendly
+notification: the doctor’s name, the date, and any notes you added.
+Nothing fancy — the goal is for you to see it, smile because you
+remembered, and go about your day.</p>
+<div class="callout">
+<p><strong>Helpful Tip.</strong> If you also fill out your Doctor Visit
+Prep sheet (Chapter 15) a day or two before, the night-before reminder
+becomes the perfect prompt to print or save the PDF and tuck it in your
+bag.</p>
+</div>
+<h2 id="doctor-visit-history">Doctor Visit History</h2>
+<p>At the bottom of the appointments list is a <strong>View Doctor Visit
+History →</strong> link. Tap it to see a tidy list of past appointments
+— useful when you’re trying to remember when you last saw a particular
+doctor.</p>
+<p><em>Next, Chapter 14 covers Mental Notes — the little notebook for
+capturing questions between visits.</em></p>
+<p class="chapter-eyebrow">
+Chapter 14
+</p>
+<h1 id="mental-notes">Mental Notes</h1>
+<p>You know the feeling: a small worry pops up on Tuesday afternoon —
+<em>“Is this dizziness new? Should I mention it next time I see
+Dr. Chen?”</em> — and by Friday it’s gone clean out of your head, only
+to come back the moment you’re sitting in the waiting room.</p>
+<p>Mental Notes is RxOrderly’s little notebook for capturing those
+thoughts as they happen, so they show up automatically when you’re
+preparing for your next visit.</p>
+<div class="callout">
+<p><strong>A Note On Plans.</strong> Mental Notes is a feature of
+RxOrderly Premium. The free tier shows a sample preview so you can see
+how it works. Chapter 20 covers upgrading.</p>
+</div>
+<h2 id="getting-there-7">Getting There</h2>
+<p>Tap the <strong>Mental Notes</strong> icon on the Task Bar at the
+bottom of any page. The Mental Notes list opens.</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 14-1</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Mental Notes Active tab with a few notes captured.
+</div>
+</div>
+<h2 id="active-and-history">Active and History</h2>
+<p>Two small tabs at the top:</p>
+<ul>
+<li><p><strong>Active. </strong>Notes you haven’t yet addressed with
+your doctor. New ones land here.</p></li>
+<li><p><strong>History. </strong>Notes you’ve marked as “addressed”
+after a visit. They live here so you can look back on what you’ve
+already discussed.</p></li>
+</ul>
+<p>When you first open Mental Notes, the Active tab is selected and (if
+you haven’t added any yet) you’ll see a friendly empty state: <em>“No
+Active Notes — Tap the + button to capture a question, concern, or
+symptom you want to remember.”</em></p>
+<h2 id="adding-a-note">Adding a Note</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 14-2</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Note editor with text field, optional medication link, and optional
+doctor link.
+</div>
+</div>
+<p>Tap the <strong>+</strong> button. A simple editor appears with the
+subtitle <em>“What’s on your mind?”</em> Just type your thought — a
+sentence or two is plenty. There’s no wrong way to write one.</p>
+<p>Two optional fields are worth knowing about:</p>
+<ul>
+<li><p><strong>Link to a medication. </strong>If the note relates to a
+specific medication (“Lisinopril — feeling lightheaded in the
+mornings”), tap to pick it from your list. When you next prepare for a
+visit, RxOrderly will surface notes linked to the medications your
+visiting doctor prescribes.</p></li>
+<li><p><strong>Link to a prescriber. </strong>If the note is really only
+for one specific doctor, link it. Otherwise leave it blank and it’s
+available for any visit.</p></li>
+</ul>
+<p>Tap <strong>Save</strong>. The note appears at the top of your Active
+list, with a friendly “Just now” timestamp.</p>
+<h2 id="marking-a-note-as-addressed">Marking a Note as Addressed</h2>
+<p>After a doctor visit where you discussed the note, swipe it (or tap
+and look for the “Mark addressed” option). It moves to the History tab,
+dated, and your Active list stays clean — only the unfinished business
+remains in front of you.</p>
+<div class="callout">
+<p><strong>Helpful Tip.</strong> The point of Mental Notes is to write
+thoughts down the instant they appear, even if “the moment” is two in
+the morning. Type a brief sentence, save it, go back to sleep. The note
+will be there next week when it matters.</p>
+</div>
+<h2 id="how-mental-notes-show-up-in-visit-prep">How Mental Notes Show Up
+in Visit Prep</h2>
+<p>When you start a Doctor Visit Prep (Chapter 15), Step 4 of the wizard
+automatically pulls in your active notes, with check marks already on
+the ones linked to the doctor you’re seeing. Uncheck any you don’t want
+on that visit’s sheet; the checked ones land directly on the printed
+Visit Prep PDF as questions to discuss.</p>
+<p><em>Now let’s see those notes in action. Chapter 15 walks through the
+Doctor Visit Prep wizard, start to finish.</em></p>
+<p class="chapter-eyebrow">
+Chapter 15
+</p>
+<h1 id="preparing-for-a-doctor-visit">Preparing for a Doctor Visit</h1>
+<p>Doctor Visit Prep is one of the most-loved features of RxOrderly. In
+under a minute, the app turns everything it knows about you —
+medications, doses, refills coming due, your active mental notes, recent
+vitals — into a tidy printable sheet your doctor will appreciate.</p>
+<div class="callout">
+<p><strong>A Note On Plans.</strong> Doctor Visit Prep is a feature of
+RxOrderly Premium, in a bundle the app calls Health Records. The free
+tier shows a preview of what each sheet would look like.</p>
+</div>
+<h2 id="getting-there-8">Getting There</h2>
+<p>Tap the <strong>Doc Visit Prep</strong> icon on the Task Bar — the
+small clipboard at the bottom of any page. The Health Records landing
+page opens.</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 15-1</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Health Records landing page with Prepare for a Visit, Medication
+History, Insurance <strong>&amp;</strong> ID, Visit Summaries, and Lab
+<strong>&amp;</strong> Test Notes cards.
+</div>
+</div>
+<p>Tap <strong>Prepare for a Visit</strong> to start a new sheet. The
+wizard opens with the title <strong>Prepare for Visit</strong> and the
+subtitle <em>“Step 1 of 7.”</em></p>
+<h2 id="the-seven-steps">The Seven Steps</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 15-2</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+Step 1 of the wizard — Who are you seeing, Visit date, Visit type.
+</div>
+</div>
+<ul>
+<li><p><strong>1. Who are you seeing? </strong>Pick the prescriber, the
+visit date, and the type of visit (routine, follow-up, urgent, etc.). If
+you came in here from an appointment reminder, this is
+pre-filled.</p></li>
+<li><p><strong>2. Have any medications changed since your last visit?
+</strong>Add new medications, mark any that have been discontinued, and
+flag dose changes. The app already knows the answer for medications
+you’ve recorded; this is your chance to highlight anything you want the
+doctor to focus on.</p></li>
+<li><p><strong>3. Which medications need refills? </strong>Medications
+prescribed by this doctor that are running low show up here
+automatically. Check the ones you’d like discussed.</p></li>
+<li><p><strong>4. What do you want to ask or discuss? </strong>Your
+Mental Notes from Chapter 14 land here, with the ones linked to this
+doctor pre-checked. Tap any one to edit; tap the + to add new ones on
+the spot.</p></li>
+<li><p><strong>5. Any symptoms or side effects to report? </strong>A
+short list of symptoms with the option to link each to a specific
+medication. The doctor sees both the symptom and the suspected cause
+side by side.</p></li>
+<li><p><strong>6. Recent health measurements. </strong>Four sections
+appear: Blood Pressure, Weight, Blood Sugar, Temperature, and Pulse /
+Heart Rate. Enter any recent home-monitoring readings you’d like to
+share.</p></li>
+<li><p><strong>7. Anything else to discuss? </strong>The catch-all box
+for anything that didn’t fit the earlier sections.</p></li>
+</ul>
+<p>Each step has <strong>Back</strong> and <strong>Next</strong>
+buttons. On the last step, <strong>Next</strong> becomes
+<strong>Review</strong>.</p>
+<h2 id="reviewing-and-generating">Reviewing and Generating</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 15-3</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+Step 4 of the wizard — questions to ask, with Mental Notes pre-checked.
+</div>
+</div>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 15-4</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+Step 6 — Blood Pressure, Weight, Blood Sugar, Temperature, Pulse.
+</div>
+</div>
+<p>After Step 7, tap <strong>Review</strong> and you’ll see the entire
+sheet laid out as the doctor will see it — medications, refills,
+questions, symptoms, vitals, and your closing notes, all on one or two
+clean printed pages.</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 15-5</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The generated Visit Prep PDF preview, ready to print or share.
+</div>
+</div>
+<p>From the preview, you can:</p>
+<ul>
+<li><p><strong>Print </strong>directly from your phone, if you have a
+printer set up.</p></li>
+<li><p><strong>Save </strong>the PDF to your phone’s files for
+later.</p></li>
+<li><p><strong>Share </strong>the PDF by email, text, or any app that
+accepts files — great for emailing your doctor in advance.</p></li>
+</ul>
+<h2 id="after-your-visit">After Your Visit</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 15-6</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The After Your Visit flow start, Step 1 of 3.
+</div>
+</div>
+<p>RxOrderly also offers a short <strong>After Your Visit</strong> flow
+— three quick screens to record what was decided, what changed, and what
+to follow up on. It’s the bookend to Visit Prep and feeds your
+medication, notes, and history records all at once. Highly recommended
+for the ten minutes after you get home.</p>
+<p><em>Chapter 16 covers the other thing your doctor (or any paramedic)
+will love: your Medical ID Card.</em></p>
+<p class="chapter-eyebrow">
+Chapter 16
+</p>
+<h1 id="your-medical-id-card">Your Medical ID Card</h1>
+<p>A Medical ID is a printable, wallet-sized card with the information
+first responders need most in an emergency: your name, blood type,
+allergies, key medications, emergency contacts, and your doctors.
+RxOrderly makes one for you from the information you’ve already
+entered.</p>
+<p>Filling this out is fifteen minutes of work that could matter
+enormously on some unexpected day. Worth every minute.</p>
+<h2 id="getting-there-9">Getting There</h2>
+<p>From the Dashboard, tap <strong>Show More</strong> if needed, then
+tap <strong>My Profile &amp;</strong>** Medical ID**. The page that
+opens lists eight sections — one card each.</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 16-1</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The My Profile <strong>&amp;</strong> Medical ID hub showing the eight
+section cards.
+</div>
+</div>
+<h2 id="the-eight-sections">The Eight Sections</h2>
+<ul>
+<li><p><strong>👤 Personal Information. </strong>Name, title (Mr., Dr.,
+etc.), date of birth, home address, mobile, home phone, email, and a
+delivery address (often the same as home).</p></li>
+<li><p><strong>🏥 Medical Information. </strong>Blood type, height,
+weight, allergies, medical conditions, dietary restrictions — the stuff
+a paramedic or ER nurse needs in the first sixty seconds.</p></li>
+<li><p><strong>🆘 Emergency Contacts. </strong>Two or three people who
+should be called if you’re unable to speak for yourself. Their phone
+number, relationship to you, and whether they have legal authority
+(power of attorney, healthcare proxy).</p></li>
+<li><p><strong>👨‍⚕️ Physicians on Card. </strong>Tick which of your
+prescribers should appear on the card. Usually your primary doctor and
+one or two key specialists.</p></li>
+<li><p><strong>💊 Medications on Card. </strong>Tick which medications
+belong on the wallet card. Most people pick just the critical ones
+(blood thinners, insulin, anti-seizure medications) rather than the full
+list.</p></li>
+<li><p><strong>🔙 Card Back. </strong>What appears on the back of the
+card — usually emergency contacts and the doctor list. You can customize
+the layout.</p></li>
+<li><p><strong>🪪 Insurance Cards. </strong>Take photos of the front and
+back of each insurance card. RxOrderly stores them privately on your
+phone and includes them on the Medical ID for quick reference.</p></li>
+<li><p><strong>🆔 Government IDs. </strong>A photo of your driver’s
+license or state ID, useful at registration desks.</p></li>
+</ul>
+<h2 id="filling-each-section">Filling Each Section</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 16-2</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Personal Information form with name, date of birth, contact, address
+sections.
+</div>
+</div>
+<p>Each section card has a tappable arrow that opens its editor. Fill
+what you have on hand, tap <strong>Save</strong>, and the section card
+shows a check mark when complete. Sections with missing required
+information stay in their incomplete state and contribute to the Setup
+Checklist back on the Dashboard.</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 16-3</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Medical Information form with allergies, blood type, conditions.
+</div>
+</div>
+<div class="callout">
+<p><strong>Helpful Tip.</strong> The single most important field on the
+entire Medical ID, hands down, is the Allergies field on Medical
+Information. A paramedic seeing “allergic to penicillin” on a card has a
+chance to save your life. Take a moment to make sure that field is
+honest and complete.</p>
+</div>
+<h2 id="generating-the-card">Generating the Card</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 16-4</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The finished Medical ID card, front and back, ready to print.
+</div>
+</div>
+<p>Once enough sections are complete, RxOrderly assembles the card. From
+the top of the My Profile &amp; Medical ID page, tap <strong>View
+Card</strong> (or <strong>Print Card</strong>) and you’ll see the front
+and back laid out side by side, ready to print at standard wallet
+size.</p>
+<p>Print on slightly heavier paper if you can, trim with scissors, and
+slip it behind your driver’s license in your wallet. Anyone who opens
+your wallet in an emergency will find it within seconds.</p>
+<h2 id="keeping-it-current">Keeping It Current</h2>
+<p>Whenever your medications, allergies, or emergency contacts change,
+RxOrderly updates the card automatically. Just remember to print and
+replace the wallet copy every six months or so. The Setup Checklist will
+quietly remind you.</p>
+<p><em>The setup — and most of the daily features — are now covered.
+Chapter 17 starts the Premium chapters with Drug Research.</em></p>
+<p class="chapter-eyebrow">
+Chapter 17
+</p>
+<h1 id="drug-research">Drug Research</h1>
+<p>The <strong>Drug &amp;</strong>** Supplement Research** page is a
+quiet, dependable second opinion. Type any medication, vitamin, or
+herbal supplement and RxOrderly fetches what the U.S. Food and Drug
+Administration says about it — what it’s for, what it interacts with,
+what side effects to watch for, and what warnings come with it.</p>
+<div class="callout">
+<p><strong>A Note On Plans.</strong> Drug Research is a feature of
+RxOrderly Premium. The free tier shows a preview so you can see how it
+works.</p>
+</div>
+<h2 id="getting-there-10">Getting There</h2>
+<p>Tap the <strong>Drug Research</strong> icon on the Task Bar — the
+small magnifying-glass-over-a-pill icon at the bottom of any page.</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 17-1</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Drug Research search page with the search box at the top.
+</div>
+</div>
+<h2 id="searching">Searching</h2>
+<p>Start typing the name of any drug or supplement. As with the
+medication list (Chapter 4), suggestions appear from a built-in database
+of more than 28,000 medications. Tap a suggestion and the results
+load.</p>
+<h2 id="the-four-tabs">The Four Tabs</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 17-2</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Overview tab for a drug, showing what it’s used for and key facts.
+</div>
+</div>
+<p>Four small tabs across the top organize what the FDA has to say:</p>
+<ul>
+<li><p><strong>Overview. </strong>What the medication is, what
+conditions it’s typically prescribed for, and the active
+ingredient.</p></li>
+<li><p><strong>Interactions. </strong>Other medications, foods, and
+supplements that may interact with it — useful to scan before adding a
+new prescription to your list.</p></li>
+<li><p><strong>Side Effects. </strong>Both common side effects (the kind
+your pharmacist will mention) and less common ones to be aware
+of.</p></li>
+<li><p><strong>Warnings. </strong>The serious cautions — black-box
+warnings, contraindications, and population-specific guidance
+(pregnancy, kidney issues, etc.).</p></li>
+</ul>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 17-3</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Interactions tab listing other drugs that may interact.
+</div>
+</div>
+<div class="callout">
+<p><strong>Helpful Tip.</strong> Drug Research is information, not
+advice. If something you read concerns you, don’t stop taking the
+medication on your own — jot a question into Mental Notes (Chapter 14)
+and bring it up at your next doctor visit. Your prescriber knows your
+full picture in a way no app can.</p>
+</div>
+<p><em>Chapter 18 covers Find Savings — the other side of the same coin:
+information about what your medications cost and how to lower the
+bill.</em></p>
+<p class="chapter-eyebrow">
+Chapter 18
+</p>
+<h1 id="find-savings">Find Savings</h1>
+<p>Prescription costs can take a real bite, and the programs that help
+with them are buried in places hard to find. <strong>Find
+Savings</strong> is RxOrderly’s effort to bring them together in one
+tidy, friendly page — with a built-in eligibility checker for the major
+programs.</p>
+<div class="callout">
+<p><strong>A Note On Plans.</strong> Find Savings is a feature of
+RxOrderly Premium. The free tier shows a preview.</p>
+</div>
+<h2 id="getting-there-11">Getting There</h2>
+<p>Tap the <strong>Savings</strong> icon on the Task Bar at the bottom
+of any page (the small dollar-sign icon).</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 18-1</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Find Savings page showing Your Medications <strong>&amp;</strong>
+Costs, Spent this year, and Resources <strong>&amp;</strong> Programs
+sections.
+</div>
+</div>
+<h2 id="tracking-what-you-spend">Tracking What You Spend</h2>
+<p>The top section is <strong>Your Medications &amp;</strong>** Costs**.
+Each medication in your list appears with a small dollar amount — what
+you’ve paid for it this year, based on the costs you’ve recorded when
+picking up refills (Chapter 8).</p>
+<p>A running total — <strong>Spent this year: $X.XX</strong> — sits at
+the top. It only counts what you’ve told the app about; if some refills
+don’t have a cost recorded, the total will be lower than reality.</p>
+<div class="callout">
+<p><strong>Helpful Tip.</strong> If your refill is free (you’re on Extra
+Help, or it’s covered by a low copay plan), record the cost as $0.00 —
+that way the year-total is accurate, and the medication doesn’t show as
+missing data.</p>
+</div>
+<h2 id="the-eligibility-screener">The Eligibility Screener</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 18-2</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Eligibility Screener with questions about Medicare, household size,
+income, and ZIP.
+</div>
+</div>
+<p>Tap <strong>Check Your Eligibility</strong> to start the screener. It
+asks four short questions:</p>
+<ul>
+<li><p><strong>1. Do you have Medicare? </strong>(Yes / No / Not
+Sure.)</p></li>
+<li><p><strong>2. Household size. </strong>Yourself plus anyone who
+depends on your income.</p></li>
+<li><p><strong>3. Approximate annual household income. </strong>Before
+taxes; include Social Security, pensions, wages, investment income for
+everyone in the household.</p></li>
+<li><p><strong>4. Zip code. </strong>Used to identify state-specific
+programs.</p></li>
+</ul>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 18-3</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Your Results page listing programs the user may qualify for, like
+Medicare Extra Help.
+</div>
+</div>
+<p>Tap <strong>Check My Eligibility</strong> and the page shows you
+which programs you may qualify for — <strong>Medicare Extra Help
+(LIS)</strong>, your <strong>State Pharmaceutical Assistance
+Program</strong>, and patient assistance from the drug manufacturers.
+Each result has a direct link to apply or learn more.</p>
+<div class="callout">
+<p><strong>Important To Know.</strong> The screener uses 2025 Federal
+Poverty Guidelines and publicly available program information. It’s an
+estimate — actual eligibility depends on assets, residency, and
+program-specific rules. Always verify with the program directly or with
+a free SHIP counselor.</p>
+</div>
+<h2 id="resources-programs">Resources ****&amp;**** Programs</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 18-4</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Resources <strong>&amp;</strong> Programs list with Extra Help, SHIP
+Counselor, Medicare Plan Finder, NeedyMeds, RxAssist.
+</div>
+</div>
+<p>Below the screener is a curated list of well-known programs. Each one
+is a tap-through to its official website:</p>
+<ul>
+<li><p><strong>Extra Help (Low Income Subsidy). </strong>The federal
+program that helps cover Medicare Part D costs.</p></li>
+<li><p><strong>SHIP Counselor Locator. </strong>Free, unbiased Medicare
+help in every state — in person or by phone.</p></li>
+<li><p><strong>Medicare Plan Finder. </strong>Compare Medicare drug
+plans by cost and coverage.</p></li>
+<li><p><strong>NeedyMeds. </strong>The comprehensive database of patient
+assistance programs — especially useful for brand-name
+medications.</p></li>
+<li><p><strong>RxAssist. </strong>Another patient-assistance directory,
+with discount drug card information.</p></li>
+</ul>
+<p><em>Chapter 19 covers your History — everything the app has quietly
+recorded since you started using it.</em></p>
+<p class="chapter-eyebrow">
+Chapter 19
+</p>
+<h1 id="your-history">Your History</h1>
+<p>Everything you’ve done in RxOrderly is quietly recorded — every
+refill request, every supply change, every doctor visit. The
+<strong>History</strong> page lets you look back at any of it, organized
+into three tidy tabs.</p>
+<h2 id="getting-there-12">Getting There</h2>
+<p>From the Dashboard, tap <strong>Show More</strong> if needed, then
+the History tile (or reach History from the bottom of Supply on Hand).
+The page title reads <strong>History</strong> with the subtitle
+<em>“Refill Requests · Supply Log · Doctor Visits.”</em></p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 19-1</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The History page with the three tabs — Refill Requests, Supply Log,
+Doctor Visits.
+</div>
+</div>
+<h2 id="refill-requests">Refill Requests</h2>
+<p>Every refill request you’ve sent (Chapter 9) is recorded here, newest
+first. Each row shows:</p>
+<ul>
+<li><p>The date you sent it.</p></li>
+<li><p>The medications you requested.</p></li>
+<li><p>How you sent it (a small icon: phone, text, or email).</p></li>
+<li><p>The status — submitted, filled, picked up — based on what you’ve
+told the app.</p></li>
+</ul>
+<h2 id="supply-log">Supply Log</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 19-2</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Supply Log tab listing refills, manual inventory entries, and
+adjustments.
+</div>
+</div>
+<p>Every supply event — refills, manual inventory, adjustments — appears
+here, with the medication, the quantity, and the date. Useful when
+you’re trying to remember when you last picked up a particular
+prescription, or when you’re reconciling your pharmacy receipts at year
+end.</p>
+<h2 id="doctor-visits">Doctor Visits</h2>
+<p>Every doctor visit you’ve generated a Visit Prep sheet for (Chapter
+15) is listed here, with the date, the prescriber, and a <strong>📄 View
+&amp;</strong>** Share Visit Sheet** button that re-opens the PDF you
+generated. Great for revisiting what was discussed without having to dig
+through your phone’s files.</p>
+<div class="callout">
+<p><strong>Helpful Tip.</strong> If you ever need to prove to insurance,
+the IRS, or your tax preparer how much you spent on prescriptions in a
+year, the Supply Log tab combined with Find Savings (Chapter 18) gives
+you the answer in two minutes.</p>
+</div>
+<p><em>Chapter 20 covers Settings — the gear in the top-right corner of
+the Dashboard, where you make the app match the way you live.</em></p>
+<p class="chapter-eyebrow">
+Chapter 20
+</p>
+<h1 id="settings-personalization">Settings ****&amp;****
+Personalization</h1>
+<p>Most of RxOrderly works just right with the defaults, so you may
+never need to visit Settings at all. But if you ever want to tweak a
+sound, adjust quiet hours, hide inactive medications, or check what plan
+you’re on, this is the page.</p>
+<h2 id="getting-there-13">Getting There</h2>
+<p>From the Dashboard, tap the small <strong>gear</strong> in the
+top-right corner. The Settings page opens.</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 20-1</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Settings page top, showing Alerts and Refill Reminders sections.
+</div>
+</div>
+<h2 id="alerts">Alerts</h2>
+<ul>
+<li><p><strong>Enable Alerts. </strong>The master switch. Turn off to
+silence all RxOrderly notifications without uninstalling.</p></li>
+<li><p><strong>Alert Sounds. </strong>Tap to choose from a small
+selection of friendly chimes. RxOrderly uses the same gentle chime on
+both iPhone and Android by default.</p></li>
+<li><p><strong>Play a sound when an alert fires. </strong>A separate
+toggle for sound itself, useful when you want visual notifications
+only.</p></li>
+<li><p><strong>Default time of day for medication reminders. </strong>If
+you don’t set a specific time on a routine, this is the time the app
+uses.</p></li>
+<li><p><strong>Notifications not working? </strong>A small
+troubleshooter link — tap it if reminders aren’t arriving and the app
+will walk you through enabling system permissions.</p></li>
+</ul>
+<h2 id="refill-reminders">Refill Reminders</h2>
+<ul>
+<li><p><strong>Remind Me to Refill. </strong>The master switch for
+refill reminders. (Separate from the master Alerts switch above, so you
+can turn off refill nudges while keeping dose reminders.)</p></li>
+<li><p><strong>How many days before you run out should we remind you?
+</strong>Seven, ten, fourteen, or twenty-one days. Default is
+ten.</p></li>
+<li><p><strong>Preferred Alert Time. </strong>Time of day refill
+reminders prefer to fire.</p></li>
+</ul>
+<h2 id="snooze">Snooze</h2>
+<ul>
+<li><p><strong>Snooze Duration. </strong>How long a snoozed reminder
+waits before re-firing.</p></li>
+<li><p><strong>Max Snooze Count. </strong>How many times a reminder can
+be snoozed before RxOrderly gently stops offering Snooze.</p></li>
+</ul>
+<h2 id="quiet-hours">Quiet Hours</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 20-2</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Settings middle, showing Quiet Hours and Display Filters sections.
+</div>
+</div>
+<ul>
+<li><p><strong>From / to. </strong>Start and end times of your Quiet
+Hours.</p></li>
+<li><p><strong>During Quiet Hours. </strong>Pick how reminders behave:
+show silently, delay until Quiet Hours end, or skip entirely.</p></li>
+</ul>
+<h2 id="display-filters">Display Filters</h2>
+<p>Three little toggles that keep your lists tidy:</p>
+<ul>
+<li><p>Hide Inactive Medications.</p></li>
+<li><p>Hide Inactive Prescribers.</p></li>
+<li><p>Hide Inactive Retailers.</p></li>
+</ul>
+<p>When on, your lists show only what you’re currently using. When off,
+you see everything including the inactive entries.</p>
+<h2 id="helpful-hints-1">Helpful Hints</h2>
+<p>The toggle that turns on or off the friendly dashboard hint cards you
+met in Chapter 3. Off, the dashboard is quieter; on, the app proactively
+suggests things you might want to do next.</p>
+<h2 id="data-backup">Data ****&amp;**** Backup</h2>
+<p>The home of all backup and restore controls. Full detail in Chapter
+21.</p>
+<h2 id="your-plan">Your Plan</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 20-3</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Settings Your Plan section showing current plan and trial controls.
+</div>
+</div>
+<p>Shows your <strong>Current Plan</strong> — Free or Premium — with a
+short description of what each includes. If you’re on Free, a
+<strong>Start Free Trial</strong> button lets you try Premium for thirty
+days.</p>
+<h2 id="help">Help</h2>
+<ul>
+<li><p><strong>Read User Manual. </strong>Opens this manual right inside
+the app, ready to scroll.</p></li>
+<li><p><strong>Email, Text or Print User Manual. </strong>Share the
+manual by email or text, or print it on paper if you’d prefer a physical
+copy.</p></li>
+<li><p><strong>Notifications not working? </strong>The same
+troubleshooter from the Alerts section, repeated here for
+convenience.</p></li>
+</ul>
+<h2 id="about">About</h2>
+<p>The app version, the copyright notice, and the cheerful reminder that
+<strong>“RxOrderly is strictly a personal medication organization tool.
+It is not a medical tool and does not provide medical
+advice.”</strong></p>
+<p><em>Next, Chapter 21 covers backups in detail — the safety net you’ll
+be glad you have.</em></p>
+<p class="chapter-eyebrow">
+Chapter 21
+</p>
+<h1 id="backups-your-safety-net">Backups: Your Safety Net</h1>
+<p>Everything RxOrderly knows about you lives on your phone — which is
+wonderful for privacy (Chapter 22) but does mean that if you lose your
+phone, you’d lose the data along with it. The fix is simple: make
+backups, store them somewhere safe.</p>
+<h2 id="getting-there-14">Getting There</h2>
+<p>Open <strong>Settings</strong> (the gear in the top-right of the
+Dashboard), and scroll down to the <strong>Data &amp;</strong>**
+Backup** section.</p>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 21-1</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Data <strong>&amp;</strong> Backup section in Settings with Create
+Backup, Restore, Cloud Backup, and Undo Last Restore.
+</div>
+</div>
+<h2 id="creating-a-backup">Creating a Backup</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 21-2</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Create Backup dialog with the optional password prompt and hint
+field.
+</div>
+</div>
+<p>Tap <strong>Back Up Now</strong> (or <strong>Create Backup</strong>).
+RxOrderly offers an optional password:</p>
+<ul>
+<li><p><strong>Leave the password blank </strong>and the backup file is
+unencrypted — convenient, but anyone who gets the file can read
+it.</p></li>
+<li><p><strong>Enter a password </strong>and RxOrderly encrypts the file
+with AES-256, the same encryption used by banks and governments. The
+file is unreadable without the password — even to us. There’s a small
+optional hint field too, in case you want a memory jog later.</p></li>
+</ul>
+<p>The app saves the backup file to your phone’s downloads folder and
+offers a share sheet so you can send the file to wherever it’s safest
+for you — email it to yourself, save it to iCloud or Google Drive,
+attach it to a message to a trusted family member.</p>
+<div class="callout">
+<p><strong>Pace Yourself.</strong> Use a password you can actually
+remember. If you forget the password, the file becomes unrecoverable —
+even Rivka SVCS can’t open it. That’s the price of real privacy: it’s
+real for you too.</p>
+</div>
+<h2 id="restoring-from-a-backup">Restoring from a Backup</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 21-3</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Restore from Backup confirmation dialog, warning that current data
+will be replaced.
+</div>
+</div>
+<p>Tap <strong>Restore Data from Backup File</strong>, pick the backup
+file (from downloads, email, Drive, wherever), enter the password if you
+used one, and confirm. RxOrderly replaces the current data with what was
+in the file.</p>
+<p>If you change your mind — maybe you restored the wrong file, or
+restored an older one by mistake — tap <strong>Undo Last
+Restore</strong> to revert to what you had before. RxOrderly keeps one
+undo step.</p>
+<h2 id="cloud-backup">Cloud Backup</h2>
+<p>The <strong>Cloud Backup</strong> section is the future home of
+automatic, encrypted, end-to-end-protected backups to RxOrderly’s
+servers — same encryption as the password-protected files above, just
+handled for you on a schedule. This feature isn’t enabled in the current
+version of the app; when it ships, it will be turned off by default, and
+you’ll be able to turn it on from this section.</p>
+<h2 id="clean-up-visit-pdfs">Clean Up Visit PDFs</h2>
+<p>Visit Prep generates a PDF for each doctor visit. Over time, those
+files add up. Tap <strong>Clean Up Visit PDFs</strong> to delete the
+saved files from your phone — the visit records in your history are
+untouched, just the PDF files go.</p>
+<div class="callout">
+<p><strong>Helpful Tip.</strong> A good rhythm: create a backup whenever
+you’ve done meaningful setup work — after adding all your medications,
+after filling out the Medical ID, after each major doctor visit. Once a
+quarter is enough for routine maintenance.</p>
+</div>
+<p><em>Chapter 22 explains, in plain English, why your data stays on
+your phone in the first place — RxOrderly’s privacy promise.</em></p>
+<p class="chapter-eyebrow">
+Chapter 22
+</p>
+<h1 id="your-privacy-in-plain-english">Your Privacy in Plain
+English</h1>
+<p>You shared a brief version of this in Chapter 1. Here’s the longer
+version, in plain language, written so that you can read it once and
+know exactly where you stand.</p>
+<h2 id="the-short-version">The Short Version</h2>
+<div class="callout callout-plain">
+<p>Your data is strictly private. Nobody has access to it except you.
+<strong>Period. Full stop.</strong></p>
+</div>
+<h2 id="the-six-promises">The Six Promises</h2>
+<p>Six commitments are built into RxOrderly — not just policy decisions
+that could be reversed, but architectural choices that shape the way the
+whole app works.</p>
+<h2 id="we-will-never-sell-your-data">1. We Will Never Sell Your
+Data</h2>
+<p>Not now, not in the future, not under any circumstance. There is no
+data-monetization business model here. RxOrderly is funded by Premium
+subscriptions, and that’s it.</p>
+<h2 id="your-information-stays-on-your-phone">2. Your Information Stays
+on Your Phone</h2>
+<p>Your medication list, your doctors, your pharmacies, your insurance
+cards, your personal details — every bit of it is stored only in the
+app’s database on your phone. RxOrderly has no servers holding copies of
+your information, and the company that makes the app cannot see it.</p>
+<p>This is an architectural decision, not a policy promise. The app
+simply doesn’t send your data anywhere. The infrastructure to do so
+doesn’t exist.</p>
+<h2 id="when-you-send-a-refill-request-you-send-it-not-us">3. When You
+Send a Refill Request, You Send It — Not Us</h2>
+<p>The composed message from a refill request opens in your own phone’s
+email, text, or phone app. You tap Send. Nothing passes through
+RxOrderly’s systems. The pharmacy receives the message from you
+directly, with your phone’s normal return information.</p>
+<p>This is the “app composes, user sends” principle. It keeps RxOrderly
+out of the middle of every transaction with your healthcare providers —
+which is exactly where you don’t need a middleman.</p>
+<h2 id="cloud-backups-will-be-end-to-end-encrypted">4. Cloud Backups
+Will Be End-to-End Encrypted</h2>
+<p>When automatic cloud backups arrive in a future version (Chapter 21),
+they will be encrypted on your phone before being uploaded, using a key
+only you hold. Rivka SVCS, the company that makes the app, will not be
+able to decrypt your backup — not even with a court order, because we
+won’t have the key.</p>
+<p>This is the same approach used by Signal, Apple iCloud Advanced Data
+Protection, and a handful of other privacy-first services. It’s the
+strongest practical guarantee available.</p>
+<h2 id="same-architecture-for-everyone">5. Same Architecture for
+Everyone</h2>
+<p>RxOrderly may, in the future, offer white-label versions of itself to
+pharmacies and clinics — an RxOrderly with their branding. Those
+white-label versions use exactly the same privacy architecture as this
+one. There is no “pharmacy-back-end” mode where the pharmacy gets to see
+your data. The promise is the same in all editions.</p>
+<h2 id="ai-conforms-to-these-rules-not-the-other-way-around">6. AI
+Conforms to These Rules, Not the Other Way Around</h2>
+<p>If RxOrderly ever uses artificial intelligence to help with anything
+— reading a medication label from a photo, summarizing a doctor’s
+instructions — the work happens on your phone first. Anything that does
+need to leave your phone is stripped of personal details (names, dates,
+identifiers) <em>before</em> it leaves. AI is a tool in the same toolbox
+as the rest of the app; it conforms to the privacy rules, never the
+other way around.</p>
+<h2 id="the-bottom-line">The Bottom Line</h2>
+<p>You can use RxOrderly as if it were a paper notebook you keep in your
+pocket: yours, private, only ever seen by you and the people you choose
+to show it to. That’s not a marketing tagline; it’s how the app is
+built.</p>
+<p><em>Chapter 23 is a short collection of practical tips — the things
+I’d tell a friend who just installed the app.</em></p>
+<p class="chapter-eyebrow">
+Chapter 23
+</p>
+<h1 id="tips-from-jacques">Tips from Jacques</h1>
+<p>If you were standing next to me at the coffee shop and had just
+installed RxOrderly, here’s what I’d tell you. Some of these you’ve seen
+in the chapters above; they’re worth gathering in one place.</p>
+<h2 id="set-it-up-completely">Set It Up Completely</h2>
+<p>I know I keep coming back to this one. It really is the whole game.
+An app that knows three of your medications and one of your doctors is
+fine; an app that knows everything is a partner that does work for you
+every day. The setup is honestly just an hour or so, spread out however
+you like.</p>
+<h2 id="use-one-routine-per-time-not-one-per-pill">Use One Routine Per
+Time, Not One Per Pill</h2>
+<p>If you take four medications with breakfast, make one routine called
+“Morning — with breakfast” with all four medications attached. Not four
+separate reminders fighting for your attention. Far gentler on the
+nerves.</p>
+<h2 id="match-routine-times-to-things-you-already-do">Match Routine
+Times to Things You Already Do</h2>
+<p>“Breakfast,” “with the morning paper,” “after my walk,” “before bed”
+— these stick. Arbitrary clock times don’t. Tie a routine to a thing you
+already do every day and you’ll never miss it.</p>
+<h2 id="print-the-medical-id-replace-it-every-six-months">Print the
+Medical ID, Replace It Every Six Months</h2>
+<p>Print on slightly heavier paper, trim with scissors, slip it in your
+wallet behind your driver’s license. Every six months, when the date on
+the card is more than half a year old, print a fresh one. If you ever
+need it, the person rifling your wallet will find it in fifteen
+seconds.</p>
+<h2 id="record-costs-as-you-go">Record Costs as You Go</h2>
+<p>When you pick up a refill, take the extra ten seconds to log the cost
+too. By year-end, your Find Savings page will be a real, accurate
+picture of what you spent — useful for taxes, useful for switching
+plans, useful for arguing with insurance.</p>
+<h2 id="use-mental-notes-the-moment-a-thought-arises">Use Mental Notes
+the Moment a Thought Arises</h2>
+<p>The whole point of Mental Notes is to capture thoughts when they
+appear, even if “the moment” is two in the morning or in the middle of a
+TV show. Five seconds to type a sentence, save, done. By your next
+visit, you’ll have a tidy list rather than the usual scramble of “I know
+there was something I wanted to mention.”</p>
+<h2 id="update-pharmacies-and-prescribers-when-they-change">Update
+Pharmacies and Prescribers When They Change</h2>
+<p>If you switch pharmacies, take two minutes to add the new one and
+switch each affected medication over. If a doctor retires or you change
+practices, edit the prescriber. RxOrderly only does the right thing if
+it knows the right things.</p>
+<h2 id="deactivate-dont-delete">Deactivate, Don’t Delete</h2>
+<p>When you stop a medication, switch <strong>Active</strong> off rather
+than deleting. Your history stays intact — useful for the doctor, useful
+for you. Same for prescribers and pharmacies.</p>
+<h2 id="back-up-after-big-changes">Back Up After Big Changes</h2>
+<p>After you finish the initial setup, create a backup. After each major
+doctor visit where things changed, create another. With a password you
+can remember. Save the file somewhere you can find it in a year — email
+it to yourself, save it in your Dropbox, hand a copy to a trusted family
+member. Phones get lost. The backup is the safety net.</p>
+<h2 id="schedule-doctor-visit-prep-the-day-before">Schedule Doctor Visit
+Prep the Day Before</h2>
+<p>The night before an appointment, take five minutes with the Doctor
+Visit Prep wizard (Chapter 15). Print the sheet, fold it, slip it in
+your bag. Your doctor will thank you and you’ll cover everything you
+meant to cover.</p>
+<h2 id="dont-be-afraid-to-email-me">Don’t Be Afraid to Email Me</h2>
+<p>I answer every email at <strong>support@rxorderly.com</strong>
+myself. There is no support team yet — just me, with a cup of coffee,
+working through whatever’s in the inbox. If something is broken, if
+something is confusing, if there’s a feature you wish existed — tell me.
+I’d rather hear from you than not.</p>
+<p><em>Final chapter, Chapter 24: where to turn when you need
+help.</em></p>
+<p class="chapter-eyebrow">
+Chapter 24
+</p>
+<h1 id="getting-help">Getting Help</h1>
+<p>You’ve made it to the last chapter. Here are the places to turn when
+you have a question, when something doesn’t work, or when you just want
+to talk to a human.</p>
+<h2 id="email-me">Email Me</h2>
+<p><strong>support@rxorderly.com</strong> is the front door. I read
+every message and answer every one personally — usually within a day or
+two. If you’re reporting a problem, the more detail the better:</p>
+<ul>
+<li><p>What you were trying to do.</p></li>
+<li><p>What you tapped right before it happened.</p></li>
+<li><p>What you expected, and what happened instead.</p></li>
+<li><p>Your phone model and operating system version (iOS 17, Android
+14, etc.) — both shown in your phone’s Settings app.</p></li>
+<li><p>The RxOrderly version number, visible at the bottom of the in-app
+Settings page (Chapter 20, About section).</p></li>
+</ul>
+<p>A screenshot of what you’re seeing on your phone — if you know how to
+take one — is the most helpful thing you can send. (On iPhone: press
+Side button + Volume Up. On Android: press Power + Volume Down. Both
+save the picture to your photos.)</p>
+<h2 id="the-manual-itself">The Manual Itself</h2>
+<p>This manual is the most thorough reference for the app, and it lives
+right inside it. Open <strong>Settings</strong> (the gear in the
+top-right of the Dashboard) and tap <strong>Read User Manual</strong>
+any time. If you’d like a copy to keep, tap <strong>Email, Text or Print
+User Manual</strong> on the same page.</p>
+<h2 id="reminders-not-arriving">Reminders Not Arriving?</h2>
+<div class="figure-placeholder">
+<div class="figure-label">
+<span class="figure-number">Figure 24-1</span> <span
+class="figure-todo">[Screenshot to come]</span>
+</div>
+<div class="figure-desc">
+The Notifications-not-working troubleshooter step-through.
+</div>
+</div>
+<p>The single most common technical issue is “my reminders stopped
+showing up.” Almost always, it’s a system-level notification permission
+that got turned off — usually by an iOS or Android update, occasionally
+by a misplaced tap. From <strong>Settings</strong>, tap
+<strong>Notifications not working?</strong> and the troubleshooter will
+walk you through getting the permissions back in place.</p>
+<h2 id="if-data-goes-missing">If Data Goes Missing</h2>
+<p>If you ever open the app and something looks wrong — medications
+missing, a doctor gone — don’t panic. Two safety nets:</p>
+<ul>
+<li><p><strong>If it just happened after a restore, </strong>tap Undo
+Last Restore in Settings (Chapter 21) to go back to where you were
+before.</p></li>
+<li><p><strong>If you have a recent backup file, </strong>restore from
+it (Chapter 21).</p></li>
+<li><p><strong>If neither helps, </strong>email me — the app sometimes
+records error reports automatically that help me figure out what
+happened on your specific phone.</p></li>
+</ul>
+<h2 id="if-the-app-crashes">If the App Crashes</h2>
+<p>When the app crashes, it records what happened (technical details,
+nothing personal) and sends them privately to Rivka SVCS so I can
+investigate. You don’t have to do anything. If the crash kept you from
+doing something important, a short email telling me what you were trying
+to do helps me find your specific crash report faster.</p>
+<h2 id="plans-pricing-and-trials">Plans, Pricing, and Trials</h2>
+<p>Settings → Your Plan shows your current plan and what it includes. If
+you’d like to try Premium, tap <strong>Start Free Trial</strong> — you
+get thirty days, no credit card required during the trial. If you decide
+it’s not for you, just let the trial expire; nothing happens, the app
+simply returns to the free tier and your data stays as-is.</p>
+<h2 id="a-closing-thanks">A Closing Thanks</h2>
+<p>Thank you for reading this all the way through. Building RxOrderly
+has been one of the more meaningful projects of my life, and the fact
+that you took the time to learn it properly means a great deal.</p>
+<p>I hope it serves you well. Take care of yourself.</p>
+<p><em>Warmly,</em></p>
+<p><strong>Jacques Fiorentino</strong></p>
+<p>Founder, Rivka SVCS LLC</p>
+<p>Maker of RxOrderly</p>
+<p>Page</p>
+
+
+  <footer class="site">
+    &copy; 2026 Rivka SVCS LLC. All rights reserved. &nbsp;&middot;&nbsp;
+    <a href="/privacy.html">Privacy Policy</a> &nbsp;&middot;&nbsp;
+    <a href="/terms.html">Terms</a> &nbsp;&middot;&nbsp;
+    <a href="/support.html">Support</a>
+  </footer>
+
+</div>
+</body>
+</html>
