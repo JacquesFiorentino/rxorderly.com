@@ -35,42 +35,173 @@
   .container {
     max-width: 740px;
     margin: 0 auto;
-    padding: 64px 24px 80px;
-    text-align: center;
+    padding: 48px 24px 80px;
   }
 
   h1 {
     font-size: 28px;
     font-weight: 800;
     color: #07305d;
-    margin: 0 0 16px;
+    margin: 0 0 6px;
   }
 
-  p {
+  .meta {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0 0 36px;
+  }
+
+  .lead {
     font-size: 17px;
     color: #374151;
-    margin: 0 0 24px;
+    line-height: 1.6;
+    margin-bottom: 32px;
   }
 
-  a.email {
+  h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #07305d;
+    margin: 40px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 24px 0 6px;
+  }
+
+  p { margin: 0 0 14px; color: #374151; }
+
+  ul { margin: 0 0 14px; padding-left: 20px; color: #374151; }
+  li { margin-bottom: 6px; }
+
+  a { color: #2563eb; }
+
+  .email-card {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin: 16px 0 28px;
+  }
+
+  .email-card .label {
+    font-size: 13px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  .email-card .address {
+    font-size: 22px;
+    font-weight: 700;
+    color: #07305d;
+    margin-bottom: 4px;
+    word-break: break-all;
+  }
+
+  .email-card .address a { color: #07305d; text-decoration: none; }
+  .email-card .address a:hover { text-decoration: underline; }
+
+  .email-card .sub {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0;
+  }
+
+  .email-actions {
+    display: flex;
+    gap: 12px;
+    margin: 18px 0 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
     display: inline-block;
-    background: #07305d;
-    color: #fff;
-    text-decoration: none;
+    padding: 14px 22px;
+    border-radius: 8px;
     font-size: 16px;
     font-weight: 600;
-    padding: 14px 32px;
-    border-radius: 10px;
-    letter-spacing: 0.2px;
+    text-decoration: none;
+    border: 2px solid #07305d;
+    cursor: pointer;
+    font-family: inherit;
+    line-height: 1.2;
+    text-align: center;
+    transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.05s;
+  }
+  .btn:active { transform: translateY(1px); }
+
+  .btn-primary { background: #07305d; color: #fff; }
+  .btn-primary:hover { background: #0a3f7a; border-color: #0a3f7a; color: #fff; text-decoration: none; }
+
+  .btn-secondary { background: #fff; color: #07305d; }
+  .btn-secondary:hover { background: #eef2f7; }
+
+  .btn-copied {
+    background: #059669 !important;
+    color: #fff !important;
+    border-color: #059669 !important;
   }
 
-  a.email:hover { background: #0a4080; }
+  .email-help {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 14px;
+    color: #374151;
+    margin: 0 0 12px;
+    line-height: 1.6;
+  }
+  .email-help p { margin: 0 0 8px; }
+  .email-help p:last-child { margin-bottom: 0; }
+  .email-help strong { color: #07305d; }
+
+  @media (max-width: 480px) {
+    .email-actions { flex-direction: column; }
+    .email-actions .btn { width: 100%; }
+  }
+
+  .quicklinks {
+    list-style: none;
+    padding-left: 0;
+    margin: 0 0 14px;
+  }
+
+  .quicklinks li {
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .quicklinks li:last-child { border-bottom: 0; }
+
+  .quicklinks a {
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .quicklinks a:hover { text-decoration: underline; }
+
+  .quicklinks .desc {
+    display: block;
+    font-size: 14px;
+    color: #6b7280;
+    font-weight: 400;
+    margin-top: 2px;
+  }
 
   footer {
     font-size: 13px;
     color: #9ca3af;
     text-align: center;
-    margin-top: 64px;
+    margin-top: 56px;
     padding-top: 24px;
     border-top: 1px solid #e5e7eb;
   }
@@ -87,14 +218,132 @@
 <div class="container">
 
   <h1>Support</h1>
-  <p>Need help with RxOrderly? Send us an email and we&rsquo;ll do our best to help.</p>
-  <a class="email" href="mailto:support@rxorderly.com">support@rxorderly.com</a>
+  <p class="meta">Last updated: May 28, 2026 &nbsp;&middot;&nbsp; Rivka SVCS LLC &nbsp;&middot;&nbsp; Los Angeles, CA</p>
+
+  <p class="lead">Need help with RxOrderly? We&rsquo;re here for you &mdash; and we read every message ourselves.</p>
+
+
+  <h2>Email Us</h2>
+
+  <div class="email-card">
+    <div class="label">Support Email</div>
+    <div class="address">support@rxorderly.com</div>
+
+    <div class="email-actions">
+      <a href="mailto:support@rxorderly.com" class="btn btn-primary">Compose Email</a>
+      <button type="button" class="btn btn-secondary" id="copyEmailBtn" onclick="copyEmailAddress()">Copy Email Address</button>
+    </div>
+
+    <div class="email-help">
+      <p><strong>&ldquo;Compose Email&rdquo;</strong> opens a new message in your phone or computer&rsquo;s email app with our address already filled in. This works on iPhone, iPad, and most computers that have an email app already set up.</p>
+      <p><strong>&ldquo;Copy Email Address&rdquo;</strong> copies the address <strong>support@rxorderly.com</strong> to your clipboard. You can then paste it into Gmail, Yahoo Mail, Outlook on the web, or whatever you use to send email &mdash; useful if no email app is set up on your device.</p>
+    </div>
+
+    <p class="sub">We aim to reply within one business day.</p>
+  </div>
+
+  <p>To help us help you faster, please include:</p>
+  <ul>
+    <li>What kind of phone or tablet you&rsquo;re using (iPhone or Android), if it&rsquo;s relevant.</li>
+    <li>A short description of what&rsquo;s happening &mdash; and what you expected to happen.</li>
+    <li>A screenshot if you can. It often saves a round of back-and-forth.</li>
+  </ul>
+
+
+  <h2>Before You Write</h2>
+
+  <p>A lot of common questions are answered in these:</p>
+
+  <ul class="quicklinks">
+    <li>
+      <a href="/manual.html">Read the User Manual &rsaquo;</a>
+      <span class="desc">The full guide to every feature, written in plain language for real-world use.</span>
+    </li>
+    <li>
+      <a href="/privacy.html">Privacy Policy &rsaquo;</a>
+      <span class="desc">What we collect, what we don&rsquo;t, and who we work for.</span>
+    </li>
+    <li>
+      <a href="/terms.html">Terms of Use &rsaquo;</a>
+      <span class="desc">The legal terms of using RxOrderly.</span>
+    </li>
+  </ul>
+
+
+  <h2>Common Questions</h2>
+
+  <h3>Is RxOrderly free?</h3>
+  <p>Yes. The core features &mdash; tracking up to 5 medications, dose reminders, refill alerts, and your Medical ID &mdash; are free forever, with no credit card required. An optional Premium upgrade unlocks unlimited medications and additional features.</p>
+
+  <h3>Is my data private?</h3>
+  <p>Yes. Your medication and health information stays on your device by default. We never sell your data, we show no ads, and we take no money from pharmaceutical companies &mdash; so we have no incentive to push you toward any particular medication or pharmacy. See the <a href="/privacy.html">Privacy Policy</a> for the full picture.</p>
+
+  <h3>My reminder didn&rsquo;t go off &mdash; what happened?</h3>
+  <p>Reminders depend on your device&rsquo;s notification settings, the operating system, and connectivity. If a reminder doesn&rsquo;t appear when you expected it, check:</p>
+  <ul>
+    <li>RxOrderly has notification permission (your phone&rsquo;s Settings &rsaquo; Notifications &rsaquo; RxOrderly).</li>
+    <li>Do Not Disturb or Focus mode isn&rsquo;t blocking it.</li>
+    <li>The phone isn&rsquo;t in silent or battery-saver mode at the reminder time.</li>
+  </ul>
+
+  <h3>How do I cancel my Premium subscription?</h3>
+  <p>Premium subscriptions are managed by the Apple App Store or Google Play, not by us. To cancel, open the Subscriptions screen in your store&rsquo;s settings on your device. Rivka SVCS LLC cannot see, charge, or refund your subscription directly &mdash; only the store can. If you need help finding the cancel button on your device, write us and we&rsquo;ll walk you through it.</p>
+
+  <h3>Can a caregiver or family member access my information?</h3>
+  <p>Not currently. RxOrderly is single-user per device today. Multi-user and caregiver features are planned for a future tier.</p>
+
+  <h3>I lost my phone &mdash; is my data gone?</h3>
+  <p>On the free plan, RxOrderly stores your medication data on your device only, so if the phone is lost the data is lost with it. A future Premium tier will offer optional cloud backup so this isn&rsquo;t an issue. Until then, we recommend keeping your medication list in a second place &mdash; a written list at home or with a family member &mdash; for peace of mind.</p>
+
 
   <footer>
     &copy; 2026 Rivka SVCS LLC. All rights reserved. &nbsp;&middot;&nbsp;
-    <a href="/privacy.html">Privacy Policy</a>
+    <a href="/privacy.html">Privacy Policy</a> &nbsp;&middot;&nbsp;
+    <a href="/terms.html">Terms of Use</a> &nbsp;&middot;&nbsp;
+    <a href="/manual.html">User Manual</a> &nbsp;&middot;&nbsp;
+    <a href="/">rxorderly.com</a>
   </footer>
 
 </div>
+<script>
+  function copyEmailAddress() {
+    var email = 'support@rxorderly.com';
+    var btn = document.getElementById('copyEmailBtn');
+    var originalText = btn.textContent;
+
+    function showCopied() {
+      btn.textContent = '\u2713 Copied!';
+      btn.classList.add('btn-copied');
+      setTimeout(function() {
+        btn.textContent = originalText;
+        btn.classList.remove('btn-copied');
+      }, 2000);
+    }
+
+    function fallbackCopy() {
+      var ta = document.createElement('textarea');
+      ta.value = email;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      if (ok) {
+        showCopied();
+      } else {
+        window.prompt('Copy the address below (press Ctrl+C or Cmd+C):', email);
+      }
+    }
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(email).then(showCopied, fallbackCopy);
+    } else {
+      fallbackCopy();
+    }
+  }
+</script>
 </body>
 </html>
